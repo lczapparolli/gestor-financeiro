@@ -1,28 +1,13 @@
-== README
+= Gestor Financeiro
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was started for Ruby on Rails learning and to help me to control my money.
 
-Things you may want to cover:
+=== Frameworks and languages used
+* Ruby (v 2.1)
+* Ruby on Rails (v 4.2.1)
+* Fundation Zurb (v 5)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+=== Future implementations
+1. Reports and charts
+2. Internationalization (i18n)
+3. Sign up and access control
