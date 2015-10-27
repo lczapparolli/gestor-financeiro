@@ -1,0 +1,60 @@
+<%= form_for(@movement) do |f| %>
+	<% if @movement.errors.any? %>
+		<% @movement.errors.full_messages.each do |message| %>
+			<div data-alert class="alert-box warning radius">
+				<p><%= message %></p>
+			</div>
+		<% end %>
+	<% end %>
+
+	<div class="row">
+		<div class="columns small-4">
+			<%= f.label :description %>
+			<%= f.text_field :description %>
+		</div>
+		<div class="columns small-4">
+			<div class="row collapse">
+				<%= f.label :date %>
+        <div class="small-2 columns">
+          <span class="prefix"><i class="fa fa-calendar"></i></span>
+        </div>
+        <div class="small-10 columns">
+					<%= f.text_field :date, :id => 'date', :value => @movement.date.try(:strftime, "%d/%m/%Y") %>
+				</div>
+			</div>
+		</div>
+		<div class="columns small-4">
+			<div class="row collapse">
+				<%= f.label :amount %>
+        <div class="small-2 columns">
+          <span class="prefix"><i class="fa fa-usd"></i></span>
+        </div>
+        <div class="small-10 columns">
+          <%= f.text_field :amount %>
+        </div>
+      </div>
+		</div>
+		<div class="columns small-12">
+			<%= f.label :account_id %>
+			<%= f.collection_select(:account_id, Account.all, :id, :name) %>
+		</div>
+		<div class="columns small-12">
+			<%= f.label :budget_id %>
+			<%= f.collection_select(:budget_id, Budget.all, :id, :name) %>
+		</div>
+		<div class="columns small-12">
+			<%= f.label :period_id %>
+			<%= f.collection_select(:period_id, Period.all, :id, :name) %>
+		</div>
+		<div class="columns small-12">
+			<%= hidden_field(:redirect, :resource, :value => params[:redirect_resource]) %>
+			<%= hidden_field(:redirect, :id, :value => params[:redirect_id]) %>
+			<%= button_tag(type: 'submit', class: 'button success') do %>
+				<i class="fa fa-check"></i> Save
+			<% end %>
+		</div>
+	</div>
+<% end %>
+<script type="text/javascript">
+	$('#date').fdatepicker({format: 'dd/mm/yyyy'});
+</script>

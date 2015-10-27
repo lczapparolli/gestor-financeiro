@@ -1,0 +1,21 @@
+<%= form_for(@budget) do |f| %>
+	<% if @budget.errors.any? %>
+		<div data-alert class="alert-box warning radius">
+			<% @budget.errors.full_messages.each do |message| %>
+				<p><%= message %></p>
+			<% end %>
+		</div>
+	<% end %>
+
+	<div class="row">
+		<div class="columns small-12">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</div>
+		<div class="columns small-12">
+			<%= button_tag(type: 'submit', class: 'button success') do %>
+				<i class="fa fa-check"></i> Save
+			<% end %>
+		</div>
+	</div>
+<% end %>

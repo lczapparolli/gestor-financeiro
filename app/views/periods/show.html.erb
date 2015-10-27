@@ -1,0 +1,68 @@
+<ul class="breadcrumbs">
+  <li><%= link_to 'Home', root_path %></li>
+	<li><%= link_to 'Periods', periods_path %></li>
+  <li class="current"><a href="#"><%= @period.name %></a></li>
+</ul>
+
+<% if notice %>
+	<div data-alert class="alert-box success radius">
+		<span id="notice"><%= notice %></span>
+		<a href="#" class="close">&times;</a>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="small-12 columns">
+		<h1><%= @period.name %> <small><%= link_to '', edit_period_path(@period), :class => "fa fa-pencil" %></small></h1>
+		<p>
+			<strong>Start:</strong>
+			<span><%= @period.start.try(:strftime, "%d/%m/%Y") %></span>
+		</p>
+		<p>
+			<strong>End:</strong>
+			<span><%= @period.end.try(:strftime, "%d/%m/%Y") %></span>
+		</p>
+		<p>
+			<strong>Balance:</strong>
+			<span><%= number_to_currency(@period.movements.sum(:amount)) %></span>
+		</p>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
+			<h1>Movements</h1>
+	</div>
+<div class="row">
+	<div class="small-12 columns">
+		<table>
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Date</th>
+					<th>Amount</th>
+					<th>Account</th>
+					<th>Budget</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @period.movements.each do |movement| %>
+					<tr>
+						<td><%= movement.description %></td>
+						<td><%= movement.date.try(:strftime, "%d/%m/%Y") %></td>
+						<td><%= number_to_currency(movement.amount) %></td>
+						<td><%= movement.account.name %></td>
+						<td><%= movement.budget.name %></td>
+					</tr>
+				<% end %>
+        <tr>
+          <td colspan="5">
+						<%= link_to new_movement_path(:period_id => @period, :redirect_resource => 'periods', :redirect_id => @period), :class => "button expand table-button" do %>
+							<i class="fa fa-plus"></i> New Movement
+						<% end %>
+          </td>
+        </tr>
+			</tbody>
+		</table>
+	</div>
+</div>

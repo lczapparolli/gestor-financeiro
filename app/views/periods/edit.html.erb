@@ -1,0 +1,8 @@
+<ul class="breadcrumbs">
+  <li><%= link_to 'Home', root_path %></li>
+	<li><%= link_to 'Periods', periods_path %></li>
+	<li><%= link_to @period.name, @period %></li>
+  <li class="current"><a href="#">Edit</a></li>
+</ul>
+
+<%= render 'form' %>

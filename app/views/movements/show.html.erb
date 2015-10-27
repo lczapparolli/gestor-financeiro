@@ -1,0 +1,38 @@
+<ul class="breadcrumbs">
+  <li><%= link_to 'Home', root_path %></li>
+	<li><%= link_to 'Movements', movements_path %></li>
+  <li class="current"><a href="#"><%= @movement.description %></a></li>
+</ul>
+
+<% if notice %>
+	<div data-alert class="alert-box success radius">
+		<span id="notice"><%= notice %></span>
+		<a href="#" class="close">&times;</a>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="small-12 columns">
+		<h1><%= @movement.description %> <small><%= link_to '', edit_movement_path(@movement), :class => "fa fa-pencil" %></small></h1>
+		<p>
+			<strong>Date:</strong>
+			<span><%= @movement.date.try(:strftime, "%d/%m/%Y") %></span>
+		</p>
+		<p>
+			<strong>Amount:</strong>
+			<span><%= number_to_currency(@movement.amount) %></span>
+		</p>
+		<p>
+			<strong>Account:</strong>
+			<span><%= @movement.account.name %></span>
+		</p>
+		<p>
+			<strong>Budget:</strong>
+			<span><%= @movement.budget.name %></span>
+		</p>
+		<p>
+			<strong>Period:</strong>
+			<span><%= @movement.period.name %></span>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<%= form_for(@forecast) do |f| %>
+	<% if @forecast.errors.any? %>
+		<div data-alert class="alert-box warning radius">
+			<% @forecast.errors.full_messages.each do |message| %>
+				<p><%= message %></p>
+			<% end %>
+		</div>
+	<% end %>
+
+	<div class="row">
+		<div class="columns small-4">
+      <%= f.label :period_id %>
+      <%= f.collection_select(:period_id, @periods, :id, :name) %>
+		</div>
+		<div class="columns small-4">
+      <%= f.label :budget_id %>
+      <%= f.collection_select(:budget_id, @budgets, :id, :name) %>
+		</div>
+		<div class="columns small-4">
+			<div class="row collapse">
+				<%= f.label :amount %>
+        <div class="small-2 columns">
+          <span class="prefix"><i class="fa fa-usd"></i></span>
+        </div>
+        <div class="small-10 columns">
+          <%= f.text_field :amount %>
+        </div>
+      </div>
+		</div>
+		<div class="columns small-12">
+			<%= button_tag(type: 'submit', class: 'button success') do %>
+				<i class="fa fa-check"></i> Save
+			<% end %>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>GestorFinanceiro</title>
+
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+
+	<body>
+		<nav class="top-bar" data-topbar role="navigation">
+			<ul class="title-area">
+				<li class="name">
+					<h1><%= link_to 'Financial Manager', root_path %></h1>
+				</li>
+				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+				<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+			</ul>
+
+			<section class="top-bar-section">
+				<!-- Right Nav Section -->
+				<ul class="right">
+
+					<li><%= link_to 'Accounts', accounts_path %></li>
+					<li><%= link_to 'Budgets', budgets_path %></li>
+					<li><%= link_to 'Periods', periods_path %></li>
+					<li><%= link_to 'Forecasts', forecasts_path %></li>
+					<li><%= link_to 'Movements', movements_path %></li>
+					<li class="has-dropdown">
+						<a href="#" data-dropdown="drop-reports" data-options="is_hover:true;">Reports</a>
+						<ul id="drop-reports" class="small f-dropdown" data-dropdown-content >
+		          <li><%= link_to 'Aasodkasodkoasoskoas', controller: 'reports', action: 'total_balance' %></li>
+		        </ul>
+					</li>
+				</ul>
+			</section>
+		</nav>
+
+		<%= yield %>
+	</body>
+</html>
