@@ -8,6 +8,7 @@
 
 		<%= stylesheet_link_tag    "application" %>
 		<%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 		<%= csrf_meta_tags %>
 	</head>
 
@@ -25,15 +26,25 @@
 				<!-- Right Nav Section -->
 				<ul class="right">
 
-					<li><%= link_to 'Accounts', accounts_path %></li>
+					<li class="has-dropdown">
+						<%= link_to 'Accounts', accounts_path %>
+						<ul class="dropdown">
+							<% Account.all.each do |account| %>
+								<li><%= link_to account.name + ': ' + number_to_currency(account.movements.sum(:amount)), account %></li>
+							<% end %>
+						</ul>
+					</li>
 					<li><%= link_to 'Budgets', budgets_path %></li>
 					<li><%= link_to 'Periods', periods_path %></li>
 					<li><%= link_to 'Forecasts', forecasts_path %></li>
 					<li><%= link_to 'Movements', movements_path %></li>
 					<li class="has-dropdown">
-						<a href="#" data-dropdown="drop-reports" data-options="is_hover:true;">Reports</a>
-						<ul id="drop-reports" class="small f-dropdown" data-dropdown-content >
-		          <li><%= link_to 'Aasodkasodkoasoskoas', controller: 'reports', action: 'total_balance' %></li>
+						<a href="#" >Reports</a>
+						<ul class="dropdown" >
+		          <li><%= link_to 'Account evolution', controller: 'reports', action: 'account_evolution' %></li>
+			        <li><%= link_to 'Budget evolution', controller: 'reports', action: 'budget_evolution' %></li>
+							<li><%= link_to 'Budget comparision', controller: 'reports', action: 'budget_comparision' %></li>
+			        <li><%= link_to 'Total balance', controller: 'reports', action: 'total_balance' %></li>
 		        </ul>
 					</li>
 				</ul>
@@ -41,5 +52,8 @@
 		</nav>
 
 		<%= yield %>
+		<script>
+    	$(document).foundation();
+  	</script>
 	</body>
 </html>

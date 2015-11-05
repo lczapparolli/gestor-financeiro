@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
   resources :accounts
 
-  get 'reports' => 'reports#index'
+  get 'reports/account_evolution' => 'reports#account_evolution'
+  get 'reports/budget_evolution' => 'reports#budget_evolution'
+  get 'reports/budget_comparision' => 'reports#budget_comparision'
   get 'reports/total_balance' => 'reports#total_balance'
 
   # The priority is based upon order of creation: first created -> highest priority.
