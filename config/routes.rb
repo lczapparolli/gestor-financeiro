@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :accounts
 
   get 'reports/account_evolution' => 'reports#account_evolution'
+  get 'reports/account_evolution_execute' => 'reports#account_evolution_execute'
   get 'reports/budget_evolution' => 'reports#budget_evolution'
   get 'reports/budget_comparision' => 'reports#budget_comparision'
   get 'reports/total_balance' => 'reports#total_balance'
