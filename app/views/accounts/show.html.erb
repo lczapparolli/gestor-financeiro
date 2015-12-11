@@ -34,21 +34,30 @@
 					<th>Amount</th>
 					<th>Budget</th>
 					<th>Period</th>
+          <th colspan="3">Actions</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				<% @account.movements.each do |movement| %>
-					<tr>
-						<td><%= movement.description %></td>
-						<td><%= movement.date.try(:strftime, "%d/%m/%Y") %></td>
-						<td><%= number_to_currency(movement.amount) %></td>
-						<td><%= movement.budget.name %></td>
-						<td><%= movement.period.name %></td>
-					</tr>
-				<% end %>
+			<% @movements.each do |movement| %>
+				<tr>
+					<td><%= movement.description %></td>
+					<td><%= movement.date.try(:strftime, "%d/%m/%Y") %></td>
+					<td><%= number_to_currency(movement.amount) %></td>
+					<td><%= movement.budget.name %></td>
+					<td><%= movement.period.name %></td>
+					<td><%= link_to "", movement, :class => "fa fa-eye" %></td>
+					<td><%= link_to "", edit_movement_path(movement), :class => "fa fa-pencil" %></td>
+					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+				</tr>
+			<% end %>
         <tr>
-          <td colspan="5">
+          <td colspan="8">
+            <%= pagination @account, @page, @rows, @totalPages %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8">
 						<%= link_to new_movement_path(:account_id => @account, :redirect_resource => 'accounts', :redirect_id => @account), :class => "button expand table-button" do %>
 							<i class="fa fa-plus"></i> New Movement
 						<% end %>

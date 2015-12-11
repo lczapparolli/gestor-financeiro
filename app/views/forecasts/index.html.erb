@@ -31,13 +31,18 @@
           <td><%= forecast.budget.name %></td>
           <td><%= number_to_currency(forecast.amount) %></td>
           <td><%= number_to_currency(Movement.where(period_id: forecast.period_id, budget_id: forecast.budget_id).sum(:amount)) %></td>
-					<td><%= link_to '', forecast, :class => "fa fa-eye" %></td>
-					<td><%= link_to '', edit_forecast_path(forecast), :class => "fa fa-pencil" %></td>
-					<td><%= link_to '', forecast, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+					<td><%= link_to "", forecast, :class => "fa fa-eye" %></td>
+					<td><%= link_to "", edit_forecast_path(forecast), :class => "fa fa-pencil" %></td>
+					<td><%= link_to "", forecast, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
 			  </tr>
 			<% end %>
+        <tr>
+          <td colspan="7">
+            <%= pagination Forecast, @page, @rows, @totalPages %>
+          </td>
+        </tr>
 				<tr>
-					<td colspan="9">
+					<td colspan="7">
 						<%= link_to new_forecast_path, :class => "button expand table-button" do %>
 							<i class="fa fa-plus"></i> New Forecast
 						<% end %>

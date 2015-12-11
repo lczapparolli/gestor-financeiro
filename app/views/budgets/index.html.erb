@@ -23,11 +23,16 @@
         <% @budgets.each do |budget| %>
           <tr>
             <td><%= budget.name %></td>
-            <td><%= link_to '', budget, :class => "fa fa-eye" %></td>
-            <td><%= link_to '', edit_budget_path(budget), :class => "fa fa-pencil" %></td>
-            <td><%= link_to '', budget, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+            <td><%= link_to "", budget, :class => "fa fa-eye" %></td>
+            <td><%= link_to "", edit_budget_path(budget), :class => "fa fa-pencil" %></td>
+            <td><%= link_to "", budget, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
           </tr>
         <% end %>
+          <tr>
+            <td colspan="5">
+              <%= pagination Budget, @page, @rows, @totalPages %>
+            </td>
+          </tr>
   				<tr>
   					<td colspan="5">
   						<%= link_to new_budget_path, :class => "button expand table-button" do %>

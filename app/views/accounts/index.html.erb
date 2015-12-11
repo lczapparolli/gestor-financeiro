@@ -27,11 +27,16 @@
 			  <tr>
 					<td><%= account.name %></td>
 					<td><%= number_to_currency(account.movements.sum(:amount)) %></td>
-					<td><%= link_to '', account, :class => "fa fa-eye" %></td>
-					<td><%= link_to '', edit_account_path(account), :class => "fa fa-pencil" %></td>
-					<td><%= link_to '', account, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+					<td><%= link_to "", account, :class => "fa fa-eye" %></td>
+					<td><%= link_to "", edit_account_path(account), :class => "fa fa-pencil" %></td>
+					<td><%= link_to "", account, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
 			  </tr>
 			<% end %>
+        <tr>
+          <td colspan="5">
+            <%= pagination Account, @page, @rows, @totalPages %>
+          </td>
+        </tr>
 				<tr>
 					<td colspan="5">
 						<%= link_to new_account_path, :class => "button expand table-button" do %>

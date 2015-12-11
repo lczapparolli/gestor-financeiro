@@ -4,12 +4,19 @@ class BudgetsController < ApplicationController
   # GET /budgets
   # GET /budgets.json
   def index
-    @budgets = Budget.all
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (Budget.count / @rows.to_f).ceil
+    @budgets = Budget.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /budgets/1
   # GET /budgets/1.json
   def show
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (@budget.movements.count / @rows.to_f).ceil
+    @movements = @budget.movements.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /budgets/new

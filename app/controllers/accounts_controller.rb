@@ -4,12 +4,19 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (Account.count / @rows.to_f).ceil
+    @accounts = Account.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /accounts/1
   # GET /accounts/1.json
   def show
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (@account.movements.count / @rows.to_f).ceil
+    @movements = @account.movements.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /accounts/new

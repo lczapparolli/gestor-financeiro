@@ -4,12 +4,19 @@ class PeriodsController < ApplicationController
   # GET /periods
   # GET /periods.json
   def index
-    @periods = Period.all
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (Period.count / @rows.to_f).ceil
+    @periods = Period.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /periods/1
   # GET /periods/1.json
   def show
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (@period.movements.count / @rows.to_f).ceil
+    @movements = @period.movements.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /periods/new

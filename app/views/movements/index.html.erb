@@ -35,11 +35,16 @@
           <td><%= movement.account.name %></td>
           <td><%= movement.budget.name %></td>
           <td><%= movement.period.name %></td>
-					<td><%= link_to '', movement, :class => "fa fa-eye" %></td>
-					<td><%= link_to '', edit_movement_path(movement), :class => "fa fa-pencil" %></td>
-					<td><%= link_to '', movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+					<td><%= link_to "", movement, :class => "fa fa-eye" %></td>
+					<td><%= link_to "", edit_movement_path(movement), :class => "fa fa-pencil" %></td>
+					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
 			  </tr>
 			<% end %>
+        <tr>
+          <td colspan="9">
+            <%= pagination Movement, @page, @rows, @totalPages %>
+          </td>
+        </tr>
 				<tr>
 					<td colspan="9">
 						<%= link_to new_movement_path, :class => "button expand table-button" do %>

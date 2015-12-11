@@ -4,7 +4,10 @@ class MovementsController < ApplicationController
   # GET /movements
   # GET /movements.json
   def index
-    @movements = Movement.all
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (Movement.count / @rows.to_f).ceil
+    @movements = Movement.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /movements/1

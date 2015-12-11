@@ -4,12 +4,19 @@ class ForecastsController < ApplicationController
   # GET /forecasts
   # GET /forecasts.json
   def index
-    @forecasts = Forecast.all
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (Forecast.count / @rows.to_f).ceil
+    @forecasts = Forecast.limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /forecasts/1
   # GET /forecasts/1.json
   def show
+    @page = params[:page] ? params[:page].to_i : 1
+    @rows = params[:rows] ? params[:rows].to_i : 10
+    @totalPages = (Movement.where(period_id: @forecast.period_id, budget_id: @forecast.budget_id).count / @rows.to_f).ceil
+    @movements = Movement.where(period_id: @forecast.period_id, budget_id: @forecast.budget_id).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /forecasts/new
