@@ -28,27 +28,3 @@ module PaginationHelper
   end
 
 end
-
-
-
-  #<ul class="pagination">
-  #  <li class="arrow"><%= link_to "", movements_path(:page => 1, :rows => @rows), :class => "fa fa-fast-backward" %></li>
-  #  <% if @page > 1 %>
-  #    <li class="arrow"><%= link_to "", movements_path(:page => @page - 1, :rows => @rows), :class => "fa fa-step-backward" %></li>
-  #  <% end %>
-  #  <% if @page > 3 %>
-  #    <li class="unavailable"><a href="">&hellip;</a></li>
-  #  <% end %>
-  #  <% 7.times do |pageNum| %>
-  #    <% if ((pageNum - 3 + @page) > 0) && ((pageNum - 3 + @page) <= @totalPages) %>
-  #      <li class=<%= (pageNum - 3 + @page) == @page?'current':'' %>><%= link_to (pageNum - 3 + @page), movements_path(:page => (pageNum - 3 + @page), :rows => @rows) %></li>
-  #    <% end %>
-  #  <% end %>
-  #  <% if @page < @totalPages - 3 %>
-  #    <li class="unavailable"><a href="">&hellip;</a></li>
-  #  <% end %>
-  #  <% if @page < @totalPages %>
-  #    <li class="arrow"><%= link_to "", movements_path(:page => @page + 1, :rows => @rows), :class => "fa fa-step-forward" %></li>
-  #  <% end %>
-  #  <li class="arrow"><%= link_to "", movements_path(:page => @totalPages, :rows => @rows), :class => "fa fa-fast-forward" %></li>
-  #</ul>

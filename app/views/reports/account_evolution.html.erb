@@ -2,7 +2,57 @@
     <div class="small-12 columns">
       <h1>Account Evolution</h1>
     </div>
+
+    <%= form_tag "/reports/account_evolution", method: :get do %>
+      <div class="columns small-4">
+        <div class="row collapse">
+          <%= label_tag :start, 'Start' %>
+          <div class="small-2 columns">
+            <span class="prefix"><i class="fa fa-calendar"></i></span>
+          </div>
+          <div class="small-10 columns">
+            <%= text_field_tag :start, @start.try(:strftime, "%d/%m/%Y"), :id => 'dateStart' %>
+          </div>
+        </div>
+      </div>
+      <div class="columns small-4">
+        <div class="row collapse">
+          <%= label_tag :end, 'End' %>
+          <div class="small-2 columns">
+            <span class="prefix"><i class="fa fa-calendar"></i></span>
+          </div>
+          <div class="small-10 columns">
+            <%= text_field_tag :end, @end.try(:strftime, "%d/%m/%Y"), :id => 'dateEnd' %>
+          </div>
+        </div>
+      </div>
+      <div class="columns small-4">
+        <div class="row collapse">
+          <%= label_tag :group, 'Group' %>
+          <div class="small-12 columns">
+            <%= select_tag :group, options_for_select(@date_groups, @group)  %>
+          </div>
+        </div>
+      </div>
+      <div class="columns small-12">
+        <div class="row collapse">
+          <%= label_tag :accounts, 'Accounts' %>
+          <div class="small-12 columns">
+            <%= select_tag :accounts, options_for_select(Account.all.map{|a| [a.name, a.id]}, @accounts.map{|a| a.id}), multiple: true  %>
+          </div>
+        </div>
+      </div>
+      <div class="columns small-4">
+        <%= submit_tag 'Filter', :class => "button" do %>
+          <i class="fa fa-check"></i> Save
+        <% end %>
+      </div>
+    <% end %>
     <div class="small-12 columns">
-      <%= @report %>
+      <%= line_chart @report, library: {'hAxis' => {'format' => 'dd/MM/yyyy'}} %>
     </div>
 </div>
+<script type="text/javascript">
+	$('#dateStart').fdatepicker({format: 'dd/mm/yyyy'});
+  $('#dateEnd').fdatepicker({format: 'dd/mm/yyyy'});
+</script>
