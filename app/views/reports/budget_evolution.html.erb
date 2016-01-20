@@ -1,1 +1,33 @@
-<h1>Budget Evolution</h1>
+<div class="row">
+  <div class="small-12 columns">
+    <h1>Account Evolution</h1>
+  </div>
+
+  <%= form_tag "/reports/budget_evolution", method: :get do %>
+    <div class="columns small-12">
+      <div class="row collapse">
+        <%= label_tag :budgets, 'Budgets' %>
+        <div class="small-12 columns">
+          <%= select_tag :budgets, options_for_select(Budget.all.map{|b| [b.name, b.id]}, @budgets.map{|b| b.id}), multiple: true  %>
+        </div>
+      </div>
+    </div>
+    <div class="columns small-12">
+      <div class="row collapse">
+        <%= label_tag :periods, 'Periods' %>
+        <div class="small-12 columns">
+          <%= select_tag :periods, options_for_select(Period.all.map{|p| [p.name, p.id]}, @periods.map{|p| p.id}), multiple: true  %>
+        </div>
+      </div>
+    </div>
+    <div class="columns small-4">
+      <%= submit_tag 'Filter', :class => "button" do %>
+        <i class="fa fa-check"></i> Save
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="small-12 columns">
+    <%= line_chart @report, discrete: true %>
+  </div>
+</div>

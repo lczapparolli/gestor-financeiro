@@ -24,19 +24,22 @@ class ReportsController < ApplicationController
       end
       @report.push(reportItem)
     end
-    #@accounts = Account.all
-    #@report = @accounts.map{|account|
-    #  {name: account.name, data: account.movements.where("date > ?", Time.new - 1.month).group(:date).sum(:amount)}
-    #}
-  end
-
-  def account_evolution_execute
   end
 
   def budget_evolution
+    @report = Array.new
+    @periods = params[:periods] ? Period.find(params[:periods]) : Period.all
+    @budgets = params[:budgets] ? Budget.find(params[:budgets]) : Budget.all
+    @budgets.each do |budget|
+      reportItem = {name: budget.name, data: Hash.new}
+      @periods.each do |period|
+        reportItem[:data][period.name] = budget.movements.where("period_id = ?", period.id).sum(:amount).round(2)
+      end
+      @report.push(reportItem)
+    end
   end
 
-  def budget_evolution
+  def budget_comparision
   end
 
   def total_balance
