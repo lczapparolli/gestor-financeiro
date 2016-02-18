@@ -1,57 +1,62 @@
 <div class="row">
-    <div class="small-12 columns">
-      <h1>Account Evolution</h1>
+  <div class="small-12 columns">
+    <h1>Account Evolution</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <%= line_chart @report, library: {'hAxis' => {'format' => 'dd/MM/yyyy'}} %>
+  </div>
+</div>
+<%= form_tag "/reports/account_evolution", method: :get do %>
+  <div class="row">
+    <div class="columns small-4">
+      <div class="row collapse">
+        <%= label_tag :start, 'Start' %>
+        <div class="small-2 columns">
+          <span class="prefix"><i class="fa fa-calendar"></i></span>
+        </div>
+        <div class="small-10 columns">
+          <%= text_field_tag :start, @start.try(:strftime, "%d/%m/%Y"), :id => 'dateStart' %>
+        </div>
+      </div>
     </div>
-
-    <%= form_tag "/reports/account_evolution", method: :get do %>
-      <div class="columns small-4">
-        <div class="row collapse">
-          <%= label_tag :start, 'Start' %>
-          <div class="small-2 columns">
-            <span class="prefix"><i class="fa fa-calendar"></i></span>
-          </div>
-          <div class="small-10 columns">
-            <%= text_field_tag :start, @start.try(:strftime, "%d/%m/%Y"), :id => 'dateStart' %>
-          </div>
+    <div class="columns small-4">
+      <div class="row collapse">
+        <%= label_tag :end, 'End' %>
+        <div class="small-2 columns">
+          <span class="prefix"><i class="fa fa-calendar"></i></span>
+        </div>
+        <div class="small-10 columns">
+          <%= text_field_tag :end, @end.try(:strftime, "%d/%m/%Y"), :id => 'dateEnd' %>
         </div>
       </div>
-      <div class="columns small-4">
-        <div class="row collapse">
-          <%= label_tag :end, 'End' %>
-          <div class="small-2 columns">
-            <span class="prefix"><i class="fa fa-calendar"></i></span>
-          </div>
-          <div class="small-10 columns">
-            <%= text_field_tag :end, @end.try(:strftime, "%d/%m/%Y"), :id => 'dateEnd' %>
-          </div>
+    </div>
+    <div class="columns small-4">
+      <div class="row collapse">
+        <%= label_tag :group, 'Group' %>
+        <div class="small-12 columns">
+          <%= select_tag :group, options_for_select(@date_groups, @group)  %>
         </div>
       </div>
-      <div class="columns small-4">
-        <div class="row collapse">
-          <%= label_tag :group, 'Group' %>
-          <div class="small-12 columns">
-            <%= select_tag :group, options_for_select(@date_groups, @group)  %>
-          </div>
-        </div>
-      </div>
-      <div class="columns small-12">
-        <div class="row collapse">
-          <%= label_tag :accounts, 'Accounts' %>
-          <div class="small-12 columns">
-            <%= select_tag :accounts, options_for_select(Account.all.map{|a| [a.name, a.id]}, @accounts.map{|a| a.id}), multiple: true  %>
-          </div>
-        </div>
-      </div>
-      <div class="columns small-4">
-        <%= submit_tag 'Filter', :class => "button" do %>
-          <i class="fa fa-check"></i> Save
-        <% end %>
+    </div>
+  </div>
+  <div class="row collapse">
+    <%= label_tag :accounts, 'Accounts' %>
+    <% Account.all.each do |account| %>
+      <div class="medium-4 columns end">
+        <%= check_box_tag 'accounts[]', account.id, @accounts.include?(account), :id => "account_#{account.id}" %> <%= label_tag "account_#{account.id}", account.name %>
       </div>
     <% end %>
-    <div class="small-12 columns">
-      <%= line_chart @report, library: {'hAxis' => {'format' => 'dd/MM/yyyy'}} %>
+  </div>
+  <div class="row">
+    <div class="columns small-4">
+      <%= button_tag :type => "submit", :class => "button" do %>
+        <i class="fa fa-check"></i> Filter
+      <% end %>
     </div>
-</div>
+  </div>
+<% end %>
 <script type="text/javascript">
 	$('#dateStart').fdatepicker({format: 'dd/mm/yyyy'});
   $('#dateEnd').fdatepicker({format: 'dd/mm/yyyy'});

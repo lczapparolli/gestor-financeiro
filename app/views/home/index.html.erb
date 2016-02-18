@@ -1,0 +1,43 @@
+<%= form_tag "/", method: :get do %>
+  <div class="row collapse">
+    <div class="columns small-12">
+      <%= label_tag :period_id, "Period" %>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="columns small-10">
+      <%= select_tag :period_id, options_from_collection_for_select(@periods, "id", "name", @period_id) %>
+    </div>
+    <div class="columns small-2">
+      <%= button_tag :type => "submit", :class => "button postfix" do %>
+        <i class="fa fa-check"></i> Filter
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<div class="row collapse">
+	<div class="columns small-12">
+    <table>
+      <thead>
+        <tr>
+          <th>Budget</th>
+          <th>Amount</th>
+          <th>Balance</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @forecasts.each do |forecast| %>
+          <tr>
+            <td><%= forecast.budget.name %></td>
+            <td><%= number_to_currency(forecast.amount) %></td>
+            <td><%= number_to_currency(Movement.where(period_id: forecast.period_id, budget_id: forecast.budget_id).sum(:amount)) %></td>
+            <td style="width: 100%;">
+              <%= forecastBalanceMeter(forecast) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
