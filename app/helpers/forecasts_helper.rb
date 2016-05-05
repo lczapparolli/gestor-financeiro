@@ -1,30 +1,55 @@
 module ForecastsHelper
 
-  def forecastBalancePercent(forecast)
-    balance = Movement.where(period_id: forecast.period_id, budget_id: forecast.budget_id).sum(:amount)
-    if forecast.amount == 0
-      percent = 100
+  def balancePercent(amount, balance)
+    percent = 0.0
+    if amount == 0
+      if balance == 0
+        percent = 0
+      else
+        percent = 100
+      end
     else
-      percent = (balance / forecast.amount) * 100
-    end
-    if (percent < 0)
-      percent = 0
-    elsif percent > 100
-      percent = 100
+      percent = (balance / amount) * 100
     end
     return percent
   end
 
+  def forecastBalancePercent(forecast)
+    balance = Movement.where(period_id: forecast.period_id, budget_id: forecast.budget_id).sum(:amount)
+    return balancePercent(forecast.amount, balance)
+  end
+
+  def balanceMeter(amount, percent)
+    percentExtra=0
+    secondaryClass = "alert"
+    if (amount == 0)
+      spanClass = "alert"
+    elsif (amount > 0)
+      spanClass = "success"
+    elsif (percent < 80)
+      spanClass = "success"
+    elsif (percent <= 100)
+      spanClass = "warning"
+    end
+    if (percent > 100)
+      if (amount > 0)
+        spanClass = ""
+        secondaryClass = "success"
+      else
+        spanClass = "warning"
+      end
+      percent = 10000 / percent
+      percentExtra = 100 - percent
+    end
+    return "<div class=\"progress\">
+              <span class=\"meter #{spanClass}\" style=\"width: #{percent}%\"></span>
+              <span class=\"meter #{secondaryClass}\" style=\"width: #{percentExtra}%\"></span>
+            </div>".html_safe
+  end
+
   def forecastBalanceMeter(forecast)
     percent = forecastBalancePercent(forecast)
-    if (percent < 80)
-      spanClass = "success"
-    elsif (percent < 95)
-      spanClass = "secondary"
-    else
-      spanClass = "alert"
-    end
-    return "<div class=\"progress #{spanClass}\"><span class=\"meter\" style=\"width: #{percent}%\" /></div>".html_safe
+    return balanceMeter(forecast.amount, percent)
   end
 
 end

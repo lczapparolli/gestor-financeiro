@@ -1486,3 +1486,14 @@ $include-html-global-classes: $include-html-classes;
 // $include-legacy-visibility-classes: true;
 
 @import 'foundation';
+
+$progress-meter-warning-color: $warning-color !default;
+
+.meter {
+  float: left;
+
+  &.secondary { @include progress-meter($bg:$progress-meter-secondary-color); }
+  &.success { @include progress-meter($bg:$progress-meter-success-color); }
+  &.alert { @include progress-meter($bg:$progress-meter-alert-color); }
+  &.warning { @include progress-meter($bg:$progress-meter-warning-color); }
+}
