@@ -12,7 +12,7 @@
     <script type="text/javascript">
       var lock = new Auth0Lock('<%= Figaro.env.auth0_client_id %>', '<%= Figaro.env.auth0_domain %>', {
         auth: {
-          redirectUrl: 'http://localhost:3000/auth/auth0/callback',
+          redirectUrl: 'https://gestor-financeiro.herokuapp.com/auth/auth0/callback',
           responseType: 'code',
           params: {
             scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
