@@ -4,14 +4,10 @@
       <%= label_tag :period_id, "Period" %>
     </div>
   </div>
-  <div class="row collapse">
-    <div class="columns small-10">
-      <%= select_tag :period_id, options_from_collection_for_select(@periods, "id", "name", @period.id) %>
-    </div>
-    <div class="columns small-2">
-      <%= button_tag :type => "submit", :class => "button postfix" do %>
-        <i class="fa fa-check"></i> Filter
-      <% end %>
+  <div class="row collapse input-group">
+    <%= select_tag :period_id, options_from_collection_for_select(@periods, "id", "name", @period.id), :class => "input-group-field" %>
+    <div class="input-group-button">
+      <%= button_tag :type => "submit", :class => "button" do %>Filter<% end %>
     </div>
   </div>
 <% end %>
@@ -20,10 +16,10 @@
     <table>
       <thead>
         <tr>
-          <th>Budget</th>
-          <th>Amount</th>
-          <th>Balance</th>
-          <th></th>
+          <th width="15%">Budget</th>
+          <th width="10%">Amount</th>
+          <th width="10%">Balance</th>
+          <th width="65%"></th>
         </tr>
       </thead>
       <tbody>
@@ -32,7 +28,7 @@
             <td><%= forecast.budget.name %></td>
             <td><%= number_to_currency(forecast.amount) %></td>
             <td><%= number_to_currency(Movement.where(period_id: forecast.period_id, budget_id: forecast.budget_id).sum(:amount)) %></td>
-            <td style="width: 100%;">
+            <td>
               <%= forecastBalanceMeter(forecast) %>
             </td>
           </tr>
