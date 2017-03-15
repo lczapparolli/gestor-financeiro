@@ -14,10 +14,9 @@ class Auth0Controller < ApplicationController
         user.save
       end
 
-      redirect_to :root
     rescue => ex
-      logger.error ex.message
     end
+    redirect_to :root
   end
 
   def failure
