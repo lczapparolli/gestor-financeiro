@@ -11,19 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008024734) do
+ActiveRecord::Schema.define(version: 20161112005809) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id"
 
   create_table "budgets", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "budgets", ["user_id"], name: "index_budgets_on_user_id"
 
   create_table "forecasts", force: :cascade do |t|
     t.integer  "period_id"
@@ -31,10 +37,12 @@ ActiveRecord::Schema.define(version: 20151008024734) do
     t.decimal  "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "forecasts", ["budget_id"], name: "index_forecasts_on_budget_id"
   add_index "forecasts", ["period_id"], name: "index_forecasts_on_period_id"
+  add_index "forecasts", ["user_id"], name: "index_forecasts_on_user_id"
 
   create_table "movements", force: :cascade do |t|
     t.string   "description"
@@ -45,16 +53,29 @@ ActiveRecord::Schema.define(version: 20151008024734) do
     t.integer  "period_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   add_index "movements", ["account_id"], name: "index_movements_on_account_id"
   add_index "movements", ["budget_id"], name: "index_movements_on_budget_id"
   add_index "movements", ["period_id"], name: "index_movements_on_period_id"
+  add_index "movements", ["user_id"], name: "index_movements_on_user_id"
 
   create_table "periods", force: :cascade do |t|
     t.string   "name"
     t.date     "start"
     t.date     "end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "periods", ["user_id"], name: "index_periods_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "auth_token"
+    t.string   "first_name"
+    t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

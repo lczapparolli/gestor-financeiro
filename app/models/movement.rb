@@ -4,4 +4,5 @@ class Movement < ActiveRecord::Base
   belongs_to :account
   belongs_to :budget
   belongs_to :period
+  belongs_to :user
 end

@@ -3,4 +3,5 @@ class Forecast < ActiveRecord::Base
 
   belongs_to :period
   belongs_to :budget
+  belongs_to :user
 end

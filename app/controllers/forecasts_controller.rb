@@ -1,4 +1,4 @@
-class ForecastsController < ApplicationController
+class ForecastsController < SecuredController
   before_action :set_forecast, only: [:show, :edit, :update, :destroy]
 
   # GET /forecasts
@@ -6,8 +6,8 @@ class ForecastsController < ApplicationController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Forecast.count / @rows.to_f).ceil
-    @forecasts = Forecast.limit(@rows).offset((@page - 1) * @rows)
+    @totalPages = (Forecast.where(user: @user).count / @rows.to_f).ceil
+    @forecasts = Forecast.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /forecasts/1
@@ -22,20 +22,21 @@ class ForecastsController < ApplicationController
   # GET /forecasts/new
   def new
     @forecast = Forecast.new
-  	@budgets = Budget.all
-  	@periods = Period.all
+  	@budgets = Budget.where(user: @user)
+  	@periods = Period.where(user: @user)
   end
 
   # GET /forecasts/1/edit
   def edit
-    @budgets = Budget.all
-    @periods = Period.all
+    @budgets = Budget.where(user: @user)
+    @periods = Period.where(user: @user)
   end
 
   # POST /forecasts
   # POST /forecasts.json
   def create
     @forecast = Forecast.new(forecast_params)
+    @forecast.user = @user
 
     respond_to do |format|
       if @forecast.save
@@ -76,6 +77,9 @@ class ForecastsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_forecast
       @forecast = Forecast.find(params[:id])
+      if @forecast.user != @user
+        redirect_to forecasts_url, notice: 'You do not have access to this forecast'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -6,7 +6,7 @@
   </div>
   <div class="row collapse">
     <div class="columns small-10">
-      <%= select_tag :period_id, options_from_collection_for_select(@periods, "id", "name", @period_id) %>
+      <%= select_tag :period_id, options_from_collection_for_select(@periods, "id", "name", @period.id) %>
     </div>
     <div class="columns small-2">
       <%= button_tag :type => "submit", :class => "button postfix" do %>
@@ -40,9 +40,9 @@
         <tr>
           <td>Total</td>
           <td><%= number_to_currency(@forecasts.sum(:amount)) %></td>
-          <td><%= number_to_currency(Movement.where(period_id: @period_id).sum(:amount)) %></td>
+          <td><%= number_to_currency(Movement.where(period_id: @period.id).sum(:amount)) %></td>
           <td style="width: 100%;">
-            <%= balanceMeter(@forecasts.sum(:amount), balancePercent(@forecasts.sum(:amount), Movement.where(period_id: @period_id).sum(:amount))) %>
+            <%= balanceMeter(@forecasts.sum(:amount), balancePercent(@forecasts.sum(:amount), Movement.where(period_id: @period.id).sum(:amount))) %>
           </td>
         </tr>
       </tbody>

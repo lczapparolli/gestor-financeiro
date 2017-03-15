@@ -1,4 +1,4 @@
-class PeriodsController < ApplicationController
+class PeriodsController < SecuredController
   before_action :set_period, only: [:show, :edit, :update, :destroy]
 
   # GET /periods
@@ -6,8 +6,8 @@ class PeriodsController < ApplicationController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Period.count / @rows.to_f).ceil
-    @periods = Period.limit(@rows).offset((@page - 1) * @rows)
+    @totalPages = (Period.where(user: @user).count / @rows.to_f).ceil
+    @periods = Period.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /periods/1
@@ -32,6 +32,7 @@ class PeriodsController < ApplicationController
   # POST /periods.json
   def create
     @period = Period.new(period_params)
+    @period.user = @user
 
     respond_to do |format|
       if @period.save
@@ -72,6 +73,9 @@ class PeriodsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_period
       @period = Period.find(params[:id])
+      if @period.user != @user
+        redirect_to periods_url, notice: 'You do not have access to this period'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

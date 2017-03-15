@@ -1,4 +1,4 @@
-class AccountsController < ApplicationController
+class AccountsController < SecuredController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   # GET /accounts
@@ -6,8 +6,8 @@ class AccountsController < ApplicationController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Account.count / @rows.to_f).ceil
-    @accounts = Account.limit(@rows).offset((@page - 1) * @rows)
+    @totalPages = (Account.where(user: @user).count / @rows.to_f).ceil
+    @accounts = Account.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /accounts/1
@@ -32,6 +32,7 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     @account = Account.new(account_params)
+    @account.user = @user
 
     respond_to do |format|
       if @account.save
@@ -72,6 +73,9 @@ class AccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_account
       @account = Account.find(params[:id])
+      if @account.user != @user
+        redirect_to accounts_url, notice: 'You do not have access to this account'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,4 +1,4 @@
-class MovementsController < ApplicationController
+class MovementsController < SecuredController
   before_action :set_movement, only: [:show, :edit, :update, :destroy]
 
   # GET /movements
@@ -6,8 +6,8 @@ class MovementsController < ApplicationController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Movement.count / @rows.to_f).ceil
-    @movements = Movement.limit(@rows).offset((@page - 1) * @rows)
+    @totalPages = (Movement.where(user: @user).count / @rows.to_f).ceil
+    @movements = Movement.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /movements/1
@@ -37,6 +37,7 @@ class MovementsController < ApplicationController
   # POST /movements.json
   def create
     @movement = Movement.new(movement_params)
+    @movement.user = @user
 
     respond_to do |format|
       if @movement.save
@@ -88,6 +89,9 @@ class MovementsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_movement
       @movement = Movement.find(params[:id])
+      if @movement.user != @user
+        redirect_to movements_url, notice: 'You do not have access to this movement'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

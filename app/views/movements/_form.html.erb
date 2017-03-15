@@ -36,15 +36,15 @@
 		</div>
 		<div class="columns small-12">
 			<%= f.label :account_id %>
-			<%= f.collection_select(:account_id, Account.all, :id, :name) %>
+			<%= f.collection_select(:account_id, Account.where(user: @user), :id, :name) %>
 		</div>
 		<div class="columns small-12">
 			<%= f.label :budget_id %>
-			<%= f.collection_select(:budget_id, Budget.all, :id, :name) %>
+			<%= f.collection_select(:budget_id, Budget.where(user: @user), :id, :name) %>
 		</div>
 		<div class="columns small-12">
 			<%= f.label :period_id %>
-			<%= f.collection_select(:period_id, Period.all, :id, :name) %>
+			<%= f.collection_select(:period_id, Period.where(user: @user), :id, :name) %>
 		</div>
 		<div class="columns small-12">
 			<%= hidden_field(:redirect, :resource, :value => params[:redirect_resource]) %>

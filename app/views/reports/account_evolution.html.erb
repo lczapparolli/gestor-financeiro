@@ -43,7 +43,7 @@
   </div>
   <div class="row collapse">
     <%= label_tag :accounts, 'Accounts' %>
-    <% Account.all.each do |account| %>
+    <% Account.where(user: @user).each do |account| %>
       <div class="medium-4 columns end">
         <%= check_box_tag 'accounts[]', account.id, @accounts.include?(account), :id => "account_#{account.id}" %> <%= label_tag "account_#{account.id}", account.name %>
       </div>

@@ -11,7 +11,7 @@
 <%= form_tag "/reports/budget_evolution", method: :get do %>
   <div class="row collapse">
     <%= label_tag :budgets, 'Budgets' %>
-    <% Budget.all.each do |budget| %>
+    <% Budget.where(user: @user).each do |budget| %>
       <div class="medium-4 columns end">
         <%= check_box_tag 'budgets[]', budget.id, @budgets.include?(budget), :id => "budget_#{budget.id}" %> <%= label_tag "budget_#{budget.id}", budget.name %>
       </div>
@@ -19,7 +19,7 @@
   </div>
   <div class="row collapse">
     <%= label_tag :periods, 'Periods' %>
-    <% Period.all.each do |period| %>
+    <% Period.where(user: @user).each do |period| %>
       <div class="medium-4 columns end">
         <%= check_box_tag 'periods[]', period.id, @periods.include?(period), :id => "period_#{period.id}" %> <%= label_tag "period_#{period.id}", period.name %>
       </div>

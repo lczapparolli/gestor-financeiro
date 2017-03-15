@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+
+  get '/user/login' => 'user#login'
+  get '/user/logout' => 'user#logout'
+  get '/user/profile' => 'user#profile'
+
+  get "/auth/auth0/callback" => "auth0#callback"
+  get "/auth/failure" => "auth0#failure"
+
   resources :forecasts
   resources :movements
-  root 'home#index'
+  root "home#index"
 
   resources :budgets
   resources :periods do
