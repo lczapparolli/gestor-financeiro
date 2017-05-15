@@ -43,10 +43,10 @@
             </ul>
           </li>
           <li>
-            <a href="#"><%= @user_info["info"]["first_name"]? @user_info["info"]["first_name"]: @user_info["info"]["name"] %></a>
+            <a href="#"><%= @user["first_name"]? @user["first_name"]: @user["name"] %></a>
             <ul class="menu vertical">
-              <li><%= link_to image_tag(@user_info["info"]["image"]), "user/profile" %></li>
-              <li><a href="/user/logout">Logout</a></li>
+              <li><%= link_to image_tag(@user["image"]), "user/profile" %></li>
+              <li><a href="/logout">Logout</a></li>
             </ul>
           </li>
         </ul>

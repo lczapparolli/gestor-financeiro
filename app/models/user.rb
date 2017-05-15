@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  validates :auth_token, presence: true
+  has_secure_password
+  validates :email, presence: true, uniqueness: true
+  validates :session_hash, uniqueness: true, :allow_blank => true
 
   has_many :accounts
   has_many :budgets

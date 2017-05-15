@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
 
-  get '/user/login' => 'user#login'
-  get '/user/logout' => 'user#logout'
-  get '/user/profile' => 'user#profile'
+  root "home#index"
 
-  get "/auth/auth0/callback" => "auth0#callback"
-  get "/auth/failure" => "auth0#failure"
+  get 'register' => 'user#new'
+  post 'register' => 'user#create'
+
+  get 'me' => 'user#edit'
+  post 'me' => 'user#update'
+
+  get 'login' => 'session#new'
+  post 'login' => 'session#create'
+  get 'logout' => 'session#destroy'
 
   resources :forecasts
   resources :movements
-  root "home#index"
-
   resources :budgets
-  resources :periods do
-    resources :budgets_periods
-  end
+  resources :periods
   resources :accounts
 
   get 'reports/account_evolution' => 'reports#account_evolution'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112005809) do
+ActiveRecord::Schema.define(version: 20170319192751) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -73,11 +73,15 @@ ActiveRecord::Schema.define(version: 20161112005809) do
   add_index "periods", ["user_id"], name: "index_periods_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "auth_token"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "session_hash"
+    t.string   "session_salt"
+    t.date     "last_login"
   end
 
 end

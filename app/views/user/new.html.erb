@@ -1,0 +1,40 @@
+<%= form_for @new_user, url: "register" do |f| %>
+  <% if @new_user.errors.any? %>
+    <div data-alert class="alert-box warning radius">
+      <% @new_user.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="medium-4 columns">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-4 columns">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="medium-4 columns"></div>
+  </div>
+  <div class="row">
+    <div class="medium-4 columns">
+      <%= f.submit class: "button success" %>
+    </div>
+  </div>
+<% end %>
