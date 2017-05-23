@@ -1,0 +1,84 @@
+@import 'variables';
+
+.container {
+  width: 100%;
+  padding: 3px;
+}
+
+.row {
+  display: inline-flex;
+  flex-flow: wrap;
+  margin: $grid-default-margin 0px;
+  width: 100%;
+}
+
+.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  padding: {
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: $grid-default-margin
+  }
+}
+
+/*Adaptative columns: always fills the row*/
+.col {
+  flex: auto;
+  flex-grow: 1;
+}
+
+/*************************
+ *Columns size definition*
+ *************************/
+
+@mixin column-size($col-size) {
+  width: (100px - $grid-default-margin) / (12px / $col-size) * 1%;
+}
+
+.col-1 {
+  @include column-size(1);
+}
+
+.col-2 {
+  @include column-size(2);
+}
+
+.col-3 {
+  width: 1px / (12px / 3) * 100%;
+}
+
+.col-4 {
+  width: 1px / (12px / 4) * 100%;
+}
+
+.col-5 {
+  width: 1px / (12px / 5) * 100%;
+}
+
+.col-6 {
+  width: 1px / (12px / 6) * 100%;
+}
+
+.col-7 {
+  width: 1px / (12px / 7) * 100%;
+}
+
+.col-8 {
+  width: 1px / (12px / 8) * 100%;
+}
+
+.col-9 {
+  width: 1px / (12px / 9) * 100%;
+}
+
+.col-10 {
+  width: 1px / (12px / 10) * 100%;
+}
+
+.col-11 {
+  width: 1px / (12px / 11) * 100%;
+}
+
+.col-12 {
+  width: 1px / (12px / 12) * 100%;
+}

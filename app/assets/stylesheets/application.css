@@ -12,7 +12,8 @@
  *
  *= require_tree .
  *= require_self
- 
+ *= require application
+
  */
  .table-button {
    margin: 0px !important;
