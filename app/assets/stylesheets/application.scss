@@ -1,6 +1,8 @@
 
-//Use only to test css classes
-@import 'test';
+//Use only to check grid
+//@import 'test';
 
+@import 'variables';
 @import 'resets';
+@import 'mixins';
 @import 'grid';

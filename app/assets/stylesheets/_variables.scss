@@ -1,4 +1,19 @@
+/*************
+ *Page widths*
+ *************/
+ //TODO: Those sizes must be reviwed
+$screen-small-end: 580px !default;
+$screen-medium-begin: $screen-small-end + 1px;
+$screen-medium-end: 790px !default;
+$screen-large-begin: $screen-medium-end + 1px;
+$screen-large-end: 1024px !default;
+$screen-huge-begin: $screen-large-end + 1px;
+$screen-huge-end: 2048px !default;
+$screen-extra-begin: $screen-huge-end + 1px;
+
 /************
  *Grid sizes*
  ************/
-$grid-default-margin: 3px;
+$grid-row-margin: 3px !default;
+$grid-cell-padding: 2px !default;
+$grid-cell-border: 0px !default;
