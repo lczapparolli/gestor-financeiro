@@ -1,13 +1,24 @@
 .container {
   width: 100%;
-  padding: 3px;
+  padding: {
+    top: 0px;
+    left: $grid-container-padding;
+    right: $grid-container-padding;
+    bottom: $grid-container-padding;
+  }
 
   @include for-size(huge) {
+    //Limiting and centering the container
     margin: {
       left: auto;
       right: auto;
     }
     max-width: $screen-large-end;
+  }
+
+  @include for-size(small_only) {
+    //Adding space at the bottom of the page for main menu
+    padding-bottom: $main-menu-height + $grid-container-padding;
   }
 }
 
@@ -20,10 +31,12 @@
 
   * {
     padding: 0px $grid-cell-padding;
-    box-sizing: border-box;
   }
 }
 
+/***********************************
+ *Mixins for grid system definition*
+ ***********************************/
 @mixin column-definition($scr-size, $col-size) {
   .col-#{$scr-size}-#{round($col-size)} {
     flex-basis: $col-size * 1%;
@@ -39,6 +52,7 @@
     @include column-definition($size, 25);
   }
 }
+
 /*************************
  *Columns size definition*
  *************************/

@@ -1,6 +1,8 @@
 @mixin for-size($scr-size) {
   @if ($scr-size == small) {
     @media screen { @content; }
+  } @else if ($scr-size == small_only) {
+    @media screen and (max-width: $screen-small-end) { @content; }
   } @else if ($scr-size == medium) {
     @media screen and (min-width: $screen-medium-begin) { @content; }
   } @else if ($scr-size == large) {

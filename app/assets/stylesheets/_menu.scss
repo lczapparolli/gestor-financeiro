@@ -1,0 +1,52 @@
+nav.main-menu {
+  margin-left:  -1 * $grid-container-padding;
+  margin-right: -1 * $grid-container-padding;
+  background-color: $main-menu-background-color;
+  color: $main-menu-text-color;
+  display: flex;
+  overflow-x: auto;
+  height: $main-menu-height;
+
+  @include for-size(small_only) {
+    //Show the menu at the bottom of the screen
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: $main-menu-title-font-size;
+    padding: $main-menu-title-padding;
+    text-decoration: none;
+    color: $main-menu-text-color;
+    margin: {
+      top: auto;
+      bottom: auto;
+    }
+
+    @include for-size(small_only) {
+      //Hide in small screens
+      display: none;
+    }
+  }
+
+  .items {
+    flex-grow: 1;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .item {
+    text-align: center;
+    display: inline-block;
+    padding: $main-menu-item-padding;
+    //Override <a /> style
+    text-decoration: none;
+    color: $main-menu-text-color;
+
+    .label {
+      display: block;
+    }
+  }
+
+}

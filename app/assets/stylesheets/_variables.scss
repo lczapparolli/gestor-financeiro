@@ -11,9 +11,31 @@ $screen-huge-begin: $screen-large-end + 1px;
 $screen-huge-end: 2048px !default;
 $screen-extra-begin: $screen-huge-end + 1px;
 
-/************
- *Grid sizes*
- ************/
+/********
+ *Resets*
+ ********/
+$body-margin: 0px !default;
+
+/********
+ *Colors*
+ ********/
+$grey-dark: rgb(75, 75, 75) !default;
+$grey-light: rgb(200, 200, 200) !default;
+
+/******
+ *Grid*
+ ******/
+$grid-container-padding:  3px !default;
 $grid-row-margin: 3px !default;
 $grid-cell-padding: 2px !default;
 $grid-cell-border: 0px !default;
+
+/******
+ *Menu*
+ ******/
+$main-menu-background-color: $grey-dark;
+$main-menu-text-color: $grey-light;
+$main-menu-title-font-size: 1.5em !default;
+$main-menu-title-padding: 3px !default;
+$main-menu-height: 60px !default;
+$main-menu-item-padding: 3px !default;
