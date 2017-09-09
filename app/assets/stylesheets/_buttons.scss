@@ -1,0 +1,59 @@
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+.button {
+  text-decoration: none;
+  display: inline-block;
+  line-height: $button-line-height;
+  position: relative;
+  border: none;
+  font-size: $button-font-size;
+  margin-bottom: $button-margin-bottom;
+  border-radius: $button-border-radius;
+  background-color: $grey-light;
+  color: darken($grey-light, $button-text-darkness);
+  transition: all $animation-time-default ease-in-out;
+
+  @include shadow();
+
+  padding: {
+    top: $button-padding-top;
+    bottom: $button-padding-bottom;
+    left: $button-padding-left;
+    right: $button-padding-right;
+  }
+
+  &:hover {
+    background-color: lighten($grey-light, $button-hover-lightness);
+    @include shadow(hover);
+  }
+
+  &:active {
+    background-color: darken($grey-light, $button-active-darkness);
+    transition: all $animation-time-fast ease-in-out;
+    @include shadow(active);
+  }
+
+}
+
+@mixin color-button($name, $color) {
+  .button-#{$name} {
+    background-color: $color;
+    color: darken($color, $button-text-darkness);
+
+    &:hover {
+      background-color: lighten($color, $button-hover-lightness);
+    }
+
+    &:active {
+      background-color: darken($color, $button-active-darkness);
+    }
+  }
+}
+
+@include color-button('blue'  , $blue);
+@include color-button('red'   , $red);
+@include color-button('yellow', $yellow);
+@include color-button('green' , $green);

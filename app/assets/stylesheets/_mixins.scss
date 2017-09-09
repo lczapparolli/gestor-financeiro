@@ -13,3 +13,40 @@
     @media screen and (min-width: $screen-extra-begin) { @content; }
   }
 }
+
+//TODO: These mixins for shadow must be refactored
+@mixin shadow($state: default) {
+  $blur-radius: $shadow-blur-radius;
+  $spread-radius: $shadow-spread-radius;
+  @if ($state == hover) {
+    $blur-radius: $shadow-hover-blur-radius;
+    $spread-radius: $shadow-hover-spread-radius;
+  } @else if ($state == active) {
+    $blur-radius: $shadow-active-blur-radius;
+    $spread-radius: $shadow-active-spread-radius;
+  }
+
+  box-shadow: $shadow-x-offset
+              $shadow-y-offset
+              $blur-radius
+              $spread-radius
+              $shadow-color;
+}
+
+@mixin top-shadow($state: default) {
+  $blur-radius: $shadow-blur-radius;
+  $spread-radius: $shadow-spread-radius;
+  @if ($state == hover) {
+    $blur-radius: $shadow-hover-blur-radius;
+    $spread-radius: $shadow-hover-spread-radius;
+  } @else if ($state == active) {
+    $blur-radius: $shadow-active-blur-radius;
+    $spread-radius: $shadow-active-spread-radius;
+  }
+
+  box-shadow: $shadow-x-offset
+              -1 * $shadow-y-offset
+              $blur-radius
+              $spread-radius
+              $shadow-color;
+}
