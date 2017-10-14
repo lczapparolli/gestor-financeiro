@@ -1,0 +1,47 @@
+.table {
+  min-width: 100%;
+  width: auto;
+  border-collapse: collapse;
+
+  tbody tr:nth-child(even) {
+    background-color: $grey-light;
+  }
+
+  tbody tr:hover {
+    background-color: $shadow-color;
+  }
+
+  th {
+    white-space: nowrap;
+  }
+
+  td, th {
+    border-bottom: $table-border-width solid $grey-dark;
+    padding: $table-cell-padding;
+    text-align: left;
+  }
+}
+
+@mixin color-table($name, $color) {
+  .table tbody tr.#{$name} {
+    background-color: $color;
+    color: darken($color, $text-darkness);
+  }
+
+  .table tbody tr.#{$name}:nth-child(even) {
+    background-color: lighten($color, $table-background-light);
+  }
+
+  .table tbody tr.#{$name}:hover {
+    background-color: darken($color, $table-background-light);
+  }
+}
+
+.fill {
+  width: 100%;
+}
+
+@include color-table(alert  , $red   );
+@include color-table(success, $green );
+@include color-table(default, $blue  );
+@include color-table(warning, $yellow);

@@ -13,7 +13,7 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
   margin-bottom: $button-margin-bottom;
   border-radius: $button-border-radius;
   background-color: $grey-light;
-  color: darken($grey-light, $button-text-darkness);
+  color: darken($grey-light, $text-darkness);
   transition: all $animation-time-default ease-in-out;
 
   @include shadow();
@@ -41,7 +41,7 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
 @mixin color-button($name, $color) {
   .button-#{$name} {
     background-color: $color;
-    color: darken($color, $button-text-darkness);
+    color: darken($color, $text-darkness);
 
     &:hover {
       background-color: lighten($color, $button-hover-lightness);
@@ -53,7 +53,7 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
   }
 }
 
-@include color-button('blue'  , $blue);
-@include color-button('red'   , $red);
-@include color-button('yellow', $yellow);
-@include color-button('green' , $green);
+@include color-button('default', $blue  );
+@include color-button('alert'  , $red   );
+@include color-button('warning', $yellow);
+@include color-button('success', $green );

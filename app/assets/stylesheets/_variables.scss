@@ -1,7 +1,7 @@
 /*************
  *Page widths*
  *************/
- //TODO: Those sizes must be reviwed
+ //TODO: These sizes must be reviwed
 $screen-small-end: 580px !default;
 $screen-medium-begin: $screen-small-end + 1px;
 $screen-medium-end: 790px !default;
@@ -20,6 +20,7 @@ $small-body-top-padding: 10px !default;
 /********
  *Colors*
  ********/
+//TODO: These colors must be reviwed
 $grey-dark: rgb(75, 75, 75) !default;
 $grey-light: rgb(200, 200, 200) !default;
 $green:  hsl(120, 90%, 85%) !default;
@@ -27,6 +28,7 @@ $red:    hsl(000, 90%, 85%) !default;
 $yellow: hsl(060, 90%, 85%) !default;
 $blue:   hsl(211, 90%, 85%) !default;
 $shadow-color: rgba(0, 0, 0, 0.25) !default;
+$text-darkness: 65 !default;
 
 /******
  *Grid*
@@ -72,12 +74,19 @@ $button-font-size: 1em !default;
 $button-line-height: 1 !default;
 $button-margin-bottom: 10px !default;
 $button-border-radius: 5px !default;
-$button-text-darkness: 65 !default;
 $button-hover-lightness: 2 !default;
 $button-active-darkness: 2 !default;
 
-/*********
+/************
  *Animations*
- *********/
+ ************/
 $animation-time-fast: 0.150s !default;
 $animation-time-default: 0.250s !default;
+
+
+/********
+ *Tables*
+ ********/
+$table-border-width: 1px !default;
+$table-cell-padding: 2px !default;
+$table-background-light: 10 !default;
