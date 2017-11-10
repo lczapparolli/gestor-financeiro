@@ -37,7 +37,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'coffee-script-source', '1.8.0'
 #Responsive framework
-gem 'foundation-rails'
+gem 'foundation-rails', '5.5.3.2'
 #Framework to build charts
 gem "chartkick"
 #Manipulate and agrupate dates
