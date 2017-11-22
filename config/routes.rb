@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'me' => 'user#update'
 
   get 'login' => 'session#new'
+  get 'css_test' => 'session#css_test'
   post 'login' => 'session#create'
   get 'logout' => 'session#destroy'
 

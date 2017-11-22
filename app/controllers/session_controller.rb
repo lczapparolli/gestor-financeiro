@@ -1,6 +1,7 @@
 class SessionController < SecuredController
-  skip_before_action :logged_in?, only: [:new, :create]
+  skip_before_action :logged_in?, only: [:new, :create, :css_test]
   layout "not_logged", only: [:new]
+  layout false, only: [:css_test]
 
   #GET /login
   def new
@@ -37,5 +38,8 @@ class SessionController < SecuredController
     @user.update(session_hash: nil, session_salt: nil)
     reset_session
     redirect_to root_url
+  end
+
+  def css_test
   end
 end

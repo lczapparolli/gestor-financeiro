@@ -39,6 +39,7 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
 }
 
 @mixin color-button($name, $color) {
+  //TODO: Maybe colors mixins can be unified
   .button-#{$name} {
     background-color: $color;
     color: darken($color, $text-darkness);
