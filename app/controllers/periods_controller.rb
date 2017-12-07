@@ -16,7 +16,7 @@ class PeriodsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (@period.movements.count / @rows.to_f).ceil
-    @movements = @period.movements.limit(@rows).offset((@page - 1) * @rows)
+    @movements = @period.movements.order(date: :desc, id: :desc).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /periods/new

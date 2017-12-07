@@ -16,7 +16,7 @@ class AccountsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (@account.movements.count / @rows.to_f).ceil
-    @movements = @account.movements.limit(@rows).offset((@page - 1) * @rows)
+    @movements = @account.movements.order(date: :desc, id: :desc).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /accounts/new
