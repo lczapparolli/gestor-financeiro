@@ -1,4 +1,4 @@
-class AddUserAuthenticationFields < ActiveRecord::Migration
+class AddUserAuthenticationFields < ActiveRecord::Migration[4.2]
   def up
     change_table :users do |t|
       t.remove :auth_token

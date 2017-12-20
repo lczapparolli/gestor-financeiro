@@ -1,4 +1,4 @@
-class AddUserReferences < ActiveRecord::Migration
+class AddUserReferences < ActiveRecord::Migration[4.2]
   def up
     change_table :accounts do |t|
       t.references :user, index: true, foreign_key: true

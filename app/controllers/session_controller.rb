@@ -1,8 +1,7 @@
 class SessionController < SecuredController
   skip_before_action :logged_in?, only: [:new, :create, :css_test]
   layout "not_logged", only: [:new]
-  layout false, only: [:css_test]
-
+  
   #GET /login
   def new
     @user = User.new
@@ -41,5 +40,6 @@ class SessionController < SecuredController
   end
 
   def css_test
+    render layout: nil
   end
 end
