@@ -1,20 +1,30 @@
-//FIXME: Table cell height changes when text is added to bar
-
 .progress {
   width: 100%;
   display: flex;
-  min-height: 1em;
+  min-height: 0.9em;
   white-space: nowrap;
   padding: 0px;
   border: 1px solid $grey-dark;
+  background-color: $grey-light;
+  border-radius: $button-border-radius;
 }
 
 .progress-item {
-  font-size: 0.8em;
+  font-size: 0.6em;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:first-child {
+    border-top-left-radius: $button-border-radius;
+    border-bottom-left-radius: $button-border-radius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $button-border-radius;
+    border-bottom-right-radius: $button-border-radius;
+  }
 
   &.success {
     background-color: $green;
@@ -24,5 +34,15 @@
   &.alert {
     background-color: $red;
     color: darken($red, $text-darkness);
+  }
+
+  &.warning {
+    background-color: $yellow;
+    color: darken($yellow, $text-darkness);
+  }
+
+  &.default {
+    background-color: $blue;
+    color: darken($blue, $text-darkness);
   }
 }

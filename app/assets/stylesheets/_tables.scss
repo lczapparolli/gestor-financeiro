@@ -4,11 +4,11 @@
   border-collapse: collapse;
 
   tbody tr:nth-child(even) {
-    background-color: $grey-light;
+    background-color: lighten($grey-light, $table-background-light / 2);
   }
 
   tbody tr:hover {
-    background-color: $shadow-color;
+    background-color: $grey-light;
   }
 
   th {
@@ -24,16 +24,16 @@
 
 @mixin color-table($name, $color) {
   .table tbody tr.#{$name} {
-    background-color: $color;
+    background-color: lighten($color, $table-background-light);
     color: darken($color, $text-darkness);
   }
 
   .table tbody tr.#{$name}:nth-child(even) {
-    background-color: lighten($color, $table-background-light);
+    background-color: lighten($color, $table-background-light / 2);
   }
 
   .table tbody tr.#{$name}:hover {
-    background-color: darken($color, $table-background-light);
+    background-color: $color;
   }
 }
 

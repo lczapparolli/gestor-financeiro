@@ -3,14 +3,18 @@ nav.main-menu {
   color: $main-menu-text-color;
   display: flex;
   overflow-x: auto;
-  height: $main-menu-height;
+  min-height: $main-menu-height;
   margin: {
     left:  -1 * $grid-container-padding;
     right: -1 * $grid-container-padding;
     bottom: $main-menu-bottom-margin;
   }
 
-  @include shadow();
+  box-shadow: $main-menu-shadow-x-offset
+              $main-menu-shadow-y-offset
+              $main-menu-shadow-blur-radius
+              $main-menu-shadow-spread-radius
+              $shadow-color;
 
   @include for-size(small_only) {
     //Show the menu at the bottom of the screen
@@ -18,7 +22,11 @@ nav.main-menu {
     bottom: 0px;
     margin-bottom: 0px;
     width: 100%;
-    @include top-shadow();
+    box-shadow: $main-menu-shadow-x-offset
+                -1 * $main-menu-shadow-y-offset
+                $main-menu-shadow-blur-radius
+                $main-menu-shadow-spread-radius
+                $shadow-color;
   }
 
   .title {

@@ -22,13 +22,13 @@ $small-body-top-padding: 10px !default;
  ********/
 //TODO: These colors must be reviwed
 $grey-dark: rgb(75, 75, 75) !default;
-$grey-light: rgb(200, 200, 200) !default;
-$green:  hsl(120, 90%, 85%) !default;
-$red:    hsl(000, 90%, 85%) !default;
-$yellow: hsl(060, 90%, 85%) !default;
-$blue:   hsl(211, 90%, 85%) !default;
+$grey-light: rgb(210, 210, 210) !default;
+$green:  hsl(120, 98%, 67%) !default;
+$red:    hsl(000, 98%, 67%) !default;
+$yellow: hsl(060, 98%, 67%) !default;
+$blue:   hsl(211, 98%, 67%) !default;
 $shadow-color: rgba(0, 0, 0, 0.25) !default;
-$text-darkness: 65 !default;
+$text-darkness: 40 !default;
 
 /******
  *Grid*
@@ -48,19 +48,24 @@ $main-menu-title-padding: 3px !default;
 $main-menu-bottom-margin: 10px !default;
 $main-menu-height: 60px !default;
 $main-menu-item-padding: 3px !default;
+$main-menu-shadow-x-offset: 0px !default;
+$main-menu-shadow-y-offset: 2px !default;
+$main-menu-shadow-blur-radius: 2px !default;
+$main-menu-shadow-spread-radius: 1px !default;
+
 
 /*********
  *Shadows*
  *********/
 $shadow-x-offset: 0px !default;
-$shadow-y-offset: 2px !default;
+$shadow-y-offset: 1px !default;
 $shadow-blur-radius: 2px !default;
-$shadow-spread-radius: 1px !default;
+$shadow-spread-radius: 0px !default;
 
-$shadow-hover-blur-radius: 3px !default;
-$shadow-hover-spread-radius: 2px !default;
+$shadow-hover-blur-radius: 2px !default;
+$shadow-hover-spread-radius: 1px !default;
 
-$shadow-active-blur-radius: 2px !default;
+$shadow-active-blur-radius: 1px !default;
 $shadow-active-spread-radius: 0px !default;
 
 /*********
@@ -73,7 +78,7 @@ $button-padding-right: 0.6em !default;
 $button-font-size: 1em !default;
 $button-line-height: 1 !default;
 $button-margin-bottom: 10px !default;
-$button-border-radius: 5px !default;
+$button-border-radius: 2px !default;
 $button-hover-lightness: 2 !default;
 $button-active-darkness: 2 !default;
 
@@ -89,4 +94,4 @@ $animation-time-default: 0.250s !default;
  ********/
 $table-border-width: 1px !default;
 $table-cell-padding: 2px !default;
-$table-background-light: 10 !default;
+$table-background-light: 22 !default;
