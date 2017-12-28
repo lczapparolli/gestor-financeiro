@@ -6,7 +6,7 @@
   padding: 0px;
   border: 1px solid $grey-dark;
   background-color: $grey-light;
-  border-radius: $button-border-radius;
+  border-radius: $border-radius;
 }
 
 .progress-item {
@@ -17,13 +17,13 @@
   align-items: center;
 
   &:first-child {
-    border-top-left-radius: $button-border-radius;
-    border-bottom-left-radius: $button-border-radius;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
   }
 
   &:last-child {
-    border-top-right-radius: $button-border-radius;
-    border-bottom-right-radius: $button-border-radius;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
   }
 
   &.success {

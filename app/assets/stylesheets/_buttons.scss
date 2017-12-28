@@ -4,6 +4,7 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
 }
 
 .button {
+  @extend .all-animated;
   text-decoration: none;
   display: inline-block;
   line-height: $button-line-height;
@@ -11,10 +12,9 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
   border: none;
   font-size: $button-font-size;
   margin-bottom: $button-margin-bottom;
-  border-radius: $button-border-radius;
+  border-radius: $border-radius;
   background-color: $grey-light;
   color: darken($grey-light, $text-darkness);
-  transition: all $animation-time-default ease-in-out;
 
   @include shadow();
 

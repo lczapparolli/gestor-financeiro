@@ -16,11 +16,13 @@ $screen-extra-begin: $screen-huge-end + 1px;
  ********/
 $body-margin: 0px !default;
 $small-body-top-padding: 10px !default;
+$border-radius: 2px !default;
 
 /********
  *Colors*
  ********/
 //TODO: These colors must be reviwed
+$white: rgb(255, 255, 255) !default;
 $grey-dark: rgb(75, 75, 75) !default;
 $grey-light: rgb(210, 210, 210) !default;
 $green:  hsl(120, 98%, 67%) !default;
@@ -78,7 +80,6 @@ $button-padding-right: 0.6em !default;
 $button-font-size: 1em !default;
 $button-line-height: 1 !default;
 $button-margin-bottom: 10px !default;
-$button-border-radius: 2px !default;
 $button-hover-lightness: 2 !default;
 $button-active-darkness: 2 !default;
 
@@ -95,3 +96,20 @@ $animation-time-default: 0.250s !default;
 $table-border-width: 1px !default;
 $table-cell-padding: 2px !default;
 $table-background-light: 22 !default;
+
+
+/*******
+ *Forms*
+ *******/
+$form-border-width: 1px !default;
+$form-label-font-size: 0.9em !default;
+$form-input-font-size: 1em !default;
+$form-input-font-weight: normal !default;
+$form-input-height: 2em !default;
+$form-input-line-height: 1.5 !default;
+$form-input-padding-horizontal: 0.3em !default;
+$form-input-padding-vertical: 0.2em !default;
+
+$form-checkbox-margin-horizontal: 0em !default;
+$form-checkbox-margin-top: 1.5em !default;
+$form-checkbox-margin-bottom: 0em !default;

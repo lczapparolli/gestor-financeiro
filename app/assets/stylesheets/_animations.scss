@@ -1,0 +1,7 @@
+.all-animated {
+  transition: all $animation-time-default ease-in-out;
+}
+
+.shadow-animated {
+  transition: box-shadow $animation-time-default ease-in-out;
+}
