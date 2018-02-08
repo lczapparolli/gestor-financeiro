@@ -28,7 +28,7 @@ class ReportsController < SecuredController
 
   def budget_evolution
     @report = Array.new
-    @periods = params[:periods] ? Period.where(id: params[:periods], user: @user) : Period.where(user: @user)
+    @periods = params[:periods] ? Period.where(id: params[:periods], user: @user).order(:start, :id) : Period.where(user: @user).order(:start, :id)
     @budgets = params[:budgets] ? Budget.where(id: params[:budgets], user: @user) : Budget.where(user: @user)
     @budgets.each do |budget|
       reportItem = {name: budget.name, data: Hash.new}

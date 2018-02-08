@@ -44,7 +44,7 @@
 		</div>
 		<div class="columns small-12">
 			<%= f.label :period_id %>
-			<%= f.collection_select(:period_id, Period.where(user: @user), :id, :name) %>
+			<%= f.collection_select(:period_id, Period.where(user: @user).order(start: :desc, id: :desc), :id, :name) %>
 		</div>
 		<div class="columns small-12">
 			<%= hidden_field(:redirect, :resource, :value => params[:redirect_resource]) %>
