@@ -1,0 +1,44 @@
+.link, .anchor {
+  @extend .color-animated;
+  color: inherit;
+
+  &:hover {
+    color: lighten($grey-dark, $link-hover-lightness);
+  }
+
+  &:active {
+    color: darken($grey-dark, $link-hover-lightness);
+  }
+
+  &:after {
+    margin-left: $link-margin-left;
+    @include fa-icon();  
+  }
+}
+
+.link:after {
+  content: $fa-var-external-link;
+}
+
+.anchor:after {
+  content: $fa-var-anchor;
+}
+
+@mixin color-link($name, $color) {
+  .link-#{$name} {
+    color: darken($color, $text-darkness);
+
+    &:hover {
+      color: lighten(darken($color, $text-darkness), $link-hover-lightness);
+    }
+
+    &:active {
+      color: darken(darken($color, $text-darkness), $link-hover-lightness);
+    }
+  }
+}
+
+@include color-link('default', $blue  );
+@include color-link('alert'  , $red   );
+@include color-link('warning', $yellow);
+@include color-link('success', $green );

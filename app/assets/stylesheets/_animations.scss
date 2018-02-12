@@ -5,3 +5,7 @@
 .shadow-animated {
   transition: box-shadow $animation-time-default ease-in-out;
 }
+
+.color-animated {
+  transition: color $animation-time-fast ease-in-out;
+}
