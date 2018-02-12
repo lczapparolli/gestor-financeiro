@@ -1,15 +1,17 @@
 class HomeController < SecuredController
 
   def index
-    @periods = Period.where(user: @user)
-    @period = params[:period_id]? Period.find(params[:period_id]): Period.where(user: @user).last
+    @periods = Period.where(user: @user).order(start: :desc, id: :desc)
+    if (params[:period_id])
+      @period = Period.find(params[:period_id])
+    end
     if @period && @period.user != @user
-      @period = Period.where(user: @user).last
+      @period = Period.where(user: @user).first
     end
     unless @period
       @period = Period.new
     end
-    @forecasts = Forecast.where(period_id: @period.id, user: @user)
+    @forecasts = Forecast.where(period_id: @period.id, user: @user).order(:amount)
   end
 
 end

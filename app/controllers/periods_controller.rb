@@ -7,7 +7,7 @@ class PeriodsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (Period.where(user: @user).count / @rows.to_f).ceil
-    @periods = Period.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
+    @periods = Period.where(user: @user).order(start: :desc, id: :desc).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /periods/1
