@@ -11,10 +11,11 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
   position: relative;
   border: none;
   font-size: $button-font-size;
-  margin-bottom: $button-margin-bottom;
   border-radius: $border-radius;
   background-color: $grey-light;
   color: darken($grey-light, $text-darkness);
+  height: $button-height;
+  line-height: $button-line-height;
 
   @include shadow();
 

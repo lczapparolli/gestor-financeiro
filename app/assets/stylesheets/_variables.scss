@@ -32,12 +32,19 @@ $blue:   hsl(211, 98%, 67%) !default;
 $shadow-color: rgba(0, 0, 0, 0.25) !default;
 $text-darkness: 40 !default;
 
+/***************
+ *Default sizes*
+ ***************/
+$default-input-height: 2em !default;
+
 /******
  *Grid*
  ******/
 $grid-container-padding:  3px !default;
 $grid-row-margin: 3px !default;
-$grid-cell-padding: 2px !default;
+$grid-cell-padding-horizontal: 2px !default;
+$grid-cell-padding-top: 0px !default;
+$grid-cell-padding-bottom: 10px !default;
 $grid-cell-border: 0px !default;
 
 /******
@@ -78,10 +85,10 @@ $button-padding-bottom: 0.3em !default;
 $button-padding-left: 0.6em !default;
 $button-padding-right: 0.6em !default;
 $button-font-size: 1em !default;
-$button-line-height: 1 !default;
-$button-margin-bottom: 10px !default;
+$button-line-height: 1.3em !default;
 $button-hover-lightness: 2 !default;
 $button-active-darkness: 2 !default;
+$button-height: $default-input-height !default;
 
 /*******
  *Links*
@@ -111,7 +118,7 @@ $form-border-width: 1px !default;
 $form-label-font-size: 0.9em !default;
 $form-input-font-size: 1em !default;
 $form-input-font-weight: normal !default;
-$form-input-height: 2em !default;
+$form-input-height: $default-input-height !default;
 $form-input-line-height: 1.5 !default;
 $form-input-padding-horizontal: 0.3em !default;
 $form-input-padding-vertical: 0.2em !default;

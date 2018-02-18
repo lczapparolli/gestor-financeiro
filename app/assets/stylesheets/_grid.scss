@@ -29,8 +29,13 @@
   margin: $grid-row-margin 0px;
   width: 100%;
 
-  * {
-    padding: 0px $grid-cell-padding;
+  & > * {
+    padding: {
+      left: $grid-cell-padding-horizontal;
+      right: $grid-cell-padding-horizontal;
+      top: $grid-cell-padding-top;
+      bottom: $grid-cell-padding-bottom;
+    }
   }
 }
 

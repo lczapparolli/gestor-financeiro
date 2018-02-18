@@ -1,3 +1,26 @@
+
+<%= form_tag "/login", method: :post do |form| %>
+  <div class="row">
+    <div class="col-medium-25 col-small-33">
+      <%= label_tag "email", "E-mail" %>
+      <%= email_field_tag "email", @user.email, placeholder: "your@email.com"  %>
+    </div>
+    <div class="col-medium-25 col-small-33">
+      <%= label_tag "password", "Password" %>
+      <%= password_field_tag "password", "", placeholder: "Your password" %>
+    </div>
+    <div class="col-medium-25 col-small-33 align-bottom">
+      <%= submit_tag "Login", class: "button button-success"  %>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-small-100">
+      <span>Or <%= link_to "Register", "register", class: "link link-default" %> to start</span>
+  </div>
+</div>
+
+<!--
 <div class="row">
   <div class="small-6 columns" >
     <%= form_tag('/login', method: 'POST') do |f| %>
@@ -24,3 +47,4 @@
     <%= link_to "Register", "register" %>
   </div>
 </div>
+-->
