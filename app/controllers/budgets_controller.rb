@@ -7,7 +7,7 @@ class BudgetsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (Budget.where(user: @user).count / @rows.to_f).ceil
-    @budgets = Budget.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
+    @budgets = Budget.where(user: @user).order(:name).limit(@rows).offset((@page - 1) * @rows)
   end
 
   # GET /budgets/1

@@ -23,13 +23,13 @@ class ForecastsController < SecuredController
   def new
     @forecast = Forecast.new
   	@budgets = Budget.where(user: @user).order(:name)
-  	@periods = Period.where(user: @user)
+  	@periods = Period.where(user: @user).order(start: :desc, id: :desc)
   end
 
   # GET /forecasts/1/edit
   def edit
     @budgets = Budget.where(user: @user).order(:name)
-    @periods = Period.where(user: @user)
+    @periods = Period.where(user: @user).order(start: :desc, id: :desc)
   end
 
   # POST /forecasts
