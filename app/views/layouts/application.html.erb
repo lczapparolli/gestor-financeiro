@@ -13,54 +13,25 @@
   </head>
 
   <body>
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to 'Financial Manager', root_path %></h1>
-        </li>
-        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-      </ul>
+    <div class="container">
+      <nav class="main-menu">
+        <%= link_to "Financial Manager", root_path, class: "title" %>
+        <div class="items">
+          <!-- TODO: These icons must be reviewed -->
+          <%= link_to accounts_path                  , class: "item" do %><i class="fa fa-bank fa-2x"></i><span class="label">Accounts</span><% end %>
+          <%= link_to budgets_path                   , class: "item" do %><i class="fa fa-list fa-2x"></i><span class="label">Budgets</span><% end %>
+          <%= link_to periods_path                   , class: "item" do %><i class="fa fa-calendar fa-2x"></i><span class="label">Periods</span><% end %>
+          <%= link_to forecasts_path                 , class: "item" do %><i class="fa fa-tasks fa-2x"></i><span class="label">Forecasts</span><% end %>
+          <%= link_to movements_path                 , class: "item" do %><i class="fa fa-usd fa-2x"></i><span class="label">Movements</span><% end %>
+          <%= link_to reports_account_evolution_path , class: "item" do %><i class="fa fa-cogs fa-2x"></i><span class="label">Account evolution</span><% end %>
+          <%= link_to reports_budget_evolution_path  , class: "item" do %><i class="fa fa-cogs fa-2x"></i><span class="label">Budget evolution</span><% end %>
+          <%= link_to reports_budget_comparision_path, class: "item" do %><i class="fa fa-cogs fa-2x"></i><span class="label">Budget comparision</span><% end %>
+          <%= link_to reports_total_balance_path     , class: "item" do %><i class="fa fa-cogs fa-2x"></i><span class="label">Total balance</span><% end %>
+        </div>
+      </nav>
 
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-
-          <li class="has-dropdown">
-            <%= link_to 'Accounts', accounts_path %>
-            <ul class="dropdown">
-              <% Account.all.each do |account| %>
-                <li><%= link_to account.name + ': ' + number_to_currency(account.movements.sum(:amount)), account %></li>
-              <% end %>
-            </ul>
-          </li>
-          <li><%= link_to 'Budgets', budgets_path %></li>
-          <li><%= link_to 'Periods', periods_path %></li>
-          <li><%= link_to 'Forecasts', forecasts_path %></li>
-          <li><%= link_to 'Movements', movements_path %></li>
-          <li class="has-dropdown">
-            <a href="#" >Reports</a>
-            <ul class="dropdown" >
-              <li><%= link_to 'Account evolution', controller: 'reports', action: 'account_evolution' %></li>
-              <li><%= link_to 'Budget evolution', controller: 'reports', action: 'budget_evolution' %></li>
-              <li><%= link_to 'Budget comparision', controller: 'reports', action: 'budget_comparision' %></li>
-              <li><%= link_to 'Total balance', controller: 'reports', action: 'total_balance' %></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="#"><%= @user["first_name"]? @user["first_name"]: @user["name"] %></a>
-            <ul class="dropdown" >
-              <li><%= link_to @user["image"]? image_tag(@user["image"]): "User", "user/profile" %></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-    </nav>
-
-    <%= yield %>
-    <script>
-      $(document).foundation();
-    </script>
+      <%= yield %>
+      
+    </div>
   </body>
 </html>

@@ -9,6 +9,7 @@ nav.main-menu {
     right: -1 * $grid-container-padding;
     bottom: $main-menu-bottom-margin;
   }
+  z-index: 999;
 
   box-shadow: $main-menu-shadow-x-offset
               $main-menu-shadow-y-offset
@@ -29,11 +30,12 @@ nav.main-menu {
                 $shadow-color;
   }
 
-  .title {
+  & > .title {
     font-size: $main-menu-title-font-size;
     padding: $main-menu-title-padding;
     text-decoration: none;
     color: $main-menu-text-color;
+    white-space: nowrap;
     margin: {
       top: auto;
       bottom: auto;
@@ -45,23 +47,22 @@ nav.main-menu {
     }
   }
 
-  .items {
+  & > .items {
     flex-grow: 1;
     white-space: nowrap;
     text-align: right;
-  }
-
-  .item {
-    text-align: center;
-    display: inline-block;
-    padding: $main-menu-item-padding;
-    //Override <a /> style
-    text-decoration: none;
-    color: $main-menu-text-color;
-
-    .label {
-      display: block;
+    
+    & > .item {
+      text-align: center;
+      display: inline-block;
+      padding: $main-menu-item-padding;
+      //Override <a /> style
+      text-decoration: none;
+      color: $main-menu-text-color;
+  
+      & > .label {
+        display: block;
+      }
     }
   }
-
 }
