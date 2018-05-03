@@ -1,6 +1,7 @@
 .link, .anchor {
   @extend .color-animated;
   color: inherit;
+  white-space: nowrap;
 
   &:hover {
     color: lighten($grey-dark, $link-hover-lightness);
