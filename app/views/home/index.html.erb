@@ -25,7 +25,7 @@
       <tbody>
         <% @forecasts.each do |forecast| %>
           <tr>
-            <td><%= link_to forecast.budget.name, forecast, class: "link link-default" %></td>
+            <td><%= link_to forecast.budget.name, forecast, class: "link link-default link-icon" %></td>
             <td><%= number_to_currency(forecast.amount) %></td>
             <td><%= number_to_currency(Movement.where(period_id: forecast.period_id, budget_id: forecast.budget_id).sum(:amount)) %></td>
             <td>

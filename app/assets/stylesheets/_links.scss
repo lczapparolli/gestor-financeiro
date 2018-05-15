@@ -17,11 +17,11 @@
   }
 }
 
-.link:after {
+.link.link-icon:after {
   content: $fa-var-external-link;
 }
 
-.anchor:after {
+.anchor.anchor-icon:after {
   content: $fa-var-anchor;
 }
 
