@@ -8,27 +8,22 @@
 	<% end %>
 
 	<div class="row">
-		<div class="columns small-4">
+		<div class="col-small-33">
       <%= f.label :period_id %>
       <%= f.collection_select(:period_id, @periods, :id, :name) %>
 		</div>
-		<div class="columns small-4">
+		<div class="col-small-33">
       <%= f.label :budget_id %>
       <%= f.collection_select(:budget_id, @budgets, :id, :name) %>
 		</div>
-		<div class="columns small-4">
-			<div class="row collapse">
-				<%= f.label :amount %>
-        <div class="small-2 columns">
-          <span class="prefix"><i class="fa fa-usd"></i></span>
-        </div>
-        <div class="small-10 columns">
-          <%= f.text_field :amount %>
-        </div>
-      </div>
+		<div class="col-small-33">
+			<%= f.label :amount do %>Amount <i class="fa fa-usd"></i><% end %>
+			<%= f.text_field :amount %>
 		</div>
-		<div class="columns small-12">
-			<%= button_tag(type: 'submit', class: 'button success') do %>
+	</div>
+	<div class="row">
+		<div class="col-small-100">
+			<%= button_tag(type: 'submit', class: 'button button-success') do %>
 				<i class="fa fa-check"></i> Save
 			<% end %>
 		</div>
