@@ -40,7 +40,7 @@
 		</div>
 		<div class="columns small-12">
 			<%= f.label :budget_id %>
-			<%= f.collection_select(:budget_id, Budget.where(user: @user), :id, :name) %>
+			<%= f.collection_select(:budget_id, Budget.where(user: @user).order(:name), :id, :name) %>
 		</div>
 		<div class="columns small-12">
 			<%= f.label :period_id %>
