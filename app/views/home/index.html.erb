@@ -1,23 +1,19 @@
 <%= form_tag "/", method: :get do %>
-  <div class="row collapse">
-    <div class="columns small-12">
+  <div class="row">
+    <div class="col-small-75">
       <%= label_tag :period_id, "Period" %>
-    </div>
-  </div>
-  <div class="row collapse">
-    <div class="columns small-10">
       <%= select_tag :period_id, options_from_collection_for_select(@periods, "id", "name", @period.id), :class => "input-group-field" %>
     </div>
-    <div class="columns small-2">
-      <%= button_tag :type => "submit", :class => "button postfix" do %>
+    <div class="col-small-25 align-bottom">
+      <%= button_tag :type => "submit", :class => "button button-success" do %>
         <i class="fa fa-check"></i> Filter
       <% end %>
     </div>
   </div>
 <% end %>
-<div class="row collapse">
-	<div class="columns small-12">
-    <table>
+<div class="row">
+	<div class="col-small-100">
+    <table class="table">
       <thead>
         <tr>
           <th>Budget</th>
@@ -29,7 +25,7 @@
       <tbody>
         <% @forecasts.each do |forecast| %>
           <tr>
-            <td><%= link_to forecast.budget.name, forecast %></td>
+            <td><%= link_to forecast.budget.name, forecast, class: "link link-default link-icon" %></td>
             <td><%= number_to_currency(forecast.amount) %></td>
             <td><%= number_to_currency(Movement.where(period_id: forecast.period_id, budget_id: forecast.budget_id).sum(:amount)) %></td>
             <td>

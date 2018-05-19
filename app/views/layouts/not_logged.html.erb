@@ -11,15 +11,14 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="row">
-      <div class="small-6 small-centered columns">
-        <h1>Financial Manager</h1>
-        <span><%= notice %></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-small-100 centered">
+          <h1>Financial Manager</h1>
+          <span><%= notice %></span>
+        </div>
       </div>
+      <%= yield %>
     </div>
-    <%= yield %>
-    <script>
-      $(document).foundation();
-    </script>
   </body>
 </html>

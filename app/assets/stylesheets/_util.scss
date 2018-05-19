@@ -1,0 +1,15 @@
+.nowrap {
+  white-space: nowrap;
+}
+
+.centered {
+  text-align: center;
+}
+
+.align-bottom {
+  display: flex;
+  
+  & > * {
+    align-self: flex-end;
+  }
+}

@@ -12,8 +12,8 @@
 <% end %>
 
 <div class="row">
-	<div class="small-12 columns">
-		<h1><%= @movement.description %> <small><%= link_to '', edit_movement_path(@movement), :class => "fa fa-pencil" %></small></h1>
+	<div class="col-small-100">
+		<h1><%= @movement.description %> <small><%= link_to '', edit_movement_path(@movement), :class => "link link-default fa fa-pencil" %></small></h1>
 		<p>
 			<strong>Date:</strong>
 			<span><%= @movement.date.try(:strftime, "%d/%m/%Y") %></span>

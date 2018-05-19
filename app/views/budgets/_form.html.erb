@@ -8,12 +8,14 @@
 	<% end %>
 
 	<div class="row">
-		<div class="columns small-12">
+		<div class="col-small-100">
 			<%= f.label :name %>
 			<%= f.text_field :name %>
 		</div>
-		<div class="columns small-12">
-			<%= button_tag(type: 'submit', class: 'button success') do %>
+	</div>
+	<div class="row">
+		<div class="col-small-100">
+			<%= button_tag(type: 'submit', class: 'button button-success') do %>
 				<i class="fa fa-check"></i> Save
 			<% end %>
 		</div>

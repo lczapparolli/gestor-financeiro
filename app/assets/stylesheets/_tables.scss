@@ -1,0 +1,49 @@
+//TODO: Add some vertical and horizontal space inside the cells
+//TODO: Use lighter colors for stripes and hover
+.table {
+  min-width: 100%;
+  width: auto;
+  border-collapse: collapse;
+
+  tbody tr:nth-child(even) {
+    background-color: lighten($grey-light, $table-background-light / 2);
+  }
+
+  tbody tr:hover {
+    background-color: $grey-light;
+  }
+
+  th {
+    white-space: nowrap;
+  }
+
+  td, th {
+    border-bottom: $table-border-width solid $grey-dark;
+    padding: $table-cell-padding;
+    text-align: left;
+  }
+}
+
+@mixin color-table($name, $color) {
+  .table tbody tr.#{$name} {
+    background-color: lighten($color, $table-background-light);
+    color: darken($color, $text-darkness);
+  }
+
+  .table tbody tr.#{$name}:nth-child(even) {
+    background-color: lighten($color, $table-background-light / 2);
+  }
+
+  .table tbody tr.#{$name}:hover {
+    background-color: $color;
+  }
+}
+
+.fill {
+  width: 100%;
+}
+
+@include color-table(alert  , $red   );
+@include color-table(success, $green );
+@include color-table(default, $blue  );
+@include color-table(warning, $yellow);

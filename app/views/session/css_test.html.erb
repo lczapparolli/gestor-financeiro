@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Teste das classes CSS</title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="main-menu">
+        <div class="title">
+          Gestor financeiro
+        </div>
+        <div class="items">
+          <a href="#1" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 1</span></a>
+          <a href="#2" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 2</span></a>
+          <a href="#3" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 3</span></a>
+          <a href="#4" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 4</span></a>
+          <a href="#5" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 5</span></a>
+          <a href="#6" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 6</span></a>
+          <a href="#7" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 7</span></a>
+          <a href="#8" class="item"><i class="fa fa-cogs fa-2x"></i><span class="label">Item 8</span></a>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col-small-100">
+          <a href="#1" class="button">Botão1</a>
+          <a href="#1" class="button button-default">Botão1</a>
+          <a href="#2" class="button button-alert">Botão2</a>
+          <a href="#3" class="button button-warning">Botão3</a>
+          <a href="#4" class="button button-success">Botão4</a>
+          <button class="button button-success" >Botão5</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-small-100">
+          <a href="http://google.com" class="link">link1</a>
+          <a href="http://google.com" class="link link-default">link2</a>
+          <a href="http://google.com" class="link link-alert">link3</a>
+          <a href="http://google.com" class="link link-warning">link4</a>
+          <a href="#anchor" class="anchor link-success">link5</a>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col-medium-50 col-small-100">
+            <label for="txtInput1">Input 1</label>
+            <input type="text" id="txtInput1" placeholder="Input 1" >
+          </div>
+          <div class="col-medium-25 col-small-50">
+            <label for="txtInput2">Input 2</label>
+            <input type="number" id="txtInput2" placeholder="Input 2" >
+          </div>
+          <div class="col-medium-25 col-small-50">
+            <label for="txtInput3">Input 3</label>
+            <input type="date" id="txtInput3" placeholder="Input 3" >
+          </div>
+          <div class="row">
+            <div class="col-medium-25 col-small-50">
+              <input type="checkbox" id="txtInput4" >
+              <label for="txtInput4">Input 4</label>
+            </div>
+            <div class="col-medium-25 col-small-50">
+              <input type="radio" id="txtInput7" >
+              <label for="txtInput7">Input 7</label>
+            </div>
+            <div class="col-medium-25 col-small-50">
+              <label for="txtInput5">Input 5</label>
+              <select id="txtInput5">
+                <option value="">Teste1</option>
+                <option value="">Teste2</option>
+                <option value="">Teste3</option>
+                <option value="">Teste4</option>
+                <option value="">Teste5</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-medium-50 col-small-100">
+              <label for="txtInput5">Input 5</label>
+              <select id="txtInput5" multiple>
+                <option value="">Teste1</option>
+                <option value="">Teste2</option>
+                <option value="">Teste3</option>
+                <option value="">Teste4</option>
+                <option value="">Teste5</option>
+              </select>
+            </div>
+            <div class="col-medium-50 col-small-100">
+              <label for="txtInput6">Input 6</label>
+              <textarea id="txtInput6" placeholder="Input 6"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-medium-25">
+            <input type="button" class="button button-default" value="Submmit" >
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-small-100">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="nowrap">Tipo</th>
+                <th class="fill">Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nowrap">Teste 1</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-item success" style="width: 50%;"></div>
+                    <div class="progress-item alert" style="width: 20%;"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="nowrap">Teste 2</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-item success" style="width: 20%;">20%</div>
+                    <div class="progress-item alert" style="width: 20%;"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="nowrap">Teste 3</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-item success" style="width: 20%;"></div>
+                    <div class="progress-item alert" style="width: 20%;"></div>
+                    <div class="progress-item warning" style="width: 20%;"></div>
+                    <div class="progress-item default" style="width: 20%;"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-large-25 col-medium-50 col-small-100"><p>Sed ut <a href="#" class="link">volutpat</a> magna, ac convallis ipsum. In ligula mauris, hendrerit eget interdum sit amet, fringilla sed augue. Donec quis condimentum ante. Phasellus non orci vitae diam tincidunt blandit. Curabitur ultricies dui vel maximus tristique. Sed nec nisi nec augue venenatis finibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam porta mauris a justo tempor vehicula. Vestibulum laoreet, diam sed suscipit lobortis, justo augue accumsan quam, sed vestibulum dolor odio sed velit. Aenean sit amet sollicitudin velit, id maximus nulla. Aenean ornare elit risus, vitae viverra elit bibendum mollis. Nunc mollis purus at nisi tincidunt sodales. Aliquam sed scelerisque libero. Quisque tincidunt ut turpis a consectetur. </p></div>
+        <div class="col-large-25 col-medium-50 col-small-100"><p>Donec sit amet risus vestibulum, <a href="#1" class="anchor">ultrices dui vel</a>, sagittis erat. Etiam varius velit eget mi consectetur consectetur. In scelerisque viverra lectus a euismod. Nam euismod, lacus quis suscipit bibendum, ex augue aliquet lorem, et auctor ligula metus et lacus. Vivamus urna ex, pellentesque in turpis eget, gravida malesuada augue. In sollicitudin neque condimentum nunc congue, vel laoreet arcu lobortis. Aliquam erat volutpat. Praesent sollicitudin ultricies lectus, sit amet tempus ligula ultricies ut. Mauris ornare non erat ut dictum. </p></div>
+        <div class="col-large-25 col-medium-75 col-small-100"><p>Nam vel neque pellentesque, vulputate sem a, euismod felis. Sed efficitur pretium venenatis. Donec et sollicitudin urna. Morbi interdum, diam nec semper imperdiet, nisi risus tempus nulla, quis pretium enim mauris nec urna. Etiam placerat eros sapien, eget rutrum quam ultrices non. Maecenas viverra dolor id venenatis tincidunt. Vestibulum eget mi leo. Nullam sollicitudin erat vel felis efficitur, id ultrices tortor maximus. Suspendisse elementum consectetur augue, sit amet consectetur quam congue vitae. Mauris eros arcu, auctor eu congue eu, rhoncus eget risus. In hac habitasse platea dictumst. </p></div>
+        <div class="col-large-25 col-medium-25 col-small-100"><p>Nam ultricies nunc velit, eu consequat orci luctus a. Mauris sollicitudin vitae lorem sit amet gravida. Phasellus quis augue pretium purus imperdiet sollicitudin eget a turpis. Sed id nunc massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec efficitur pretium purus vitae convallis. Pellentesque tempor placerat est ut sollicitudin. Proin sollicitudin, orci id scelerisque pretium, quam eros luctus arcu, id volutpat diam risus et eros. In eget iaculis tellus. Proin quis varius purus. In velit metus, lobortis eu aliquet in, tristique ut ante. In rhoncus metus mi, nec rutrum augue ornare vitae. Aenean vel sagittis dui. Fusce imperdiet enim risus. </p></div>
+      </div>
+      <div class="row">
+        <div class="col-small-50">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Head 1</th><th>Head 2</th><th>Head 3</th><th>Head 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr>
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-medium-50">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="fill">Head 1</th><th>Head 2</th><th>Head 3</th><th>Head 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="success">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr class="success">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr class="alert">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr class="alert">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr class="warning">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr class="warning">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr class="default">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+              <tr class="default">
+                <td>Col 1</td><td>Col 2</td><td>Col 3</td><td>Col 4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

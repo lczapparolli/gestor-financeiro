@@ -1,0 +1,68 @@
+nav.main-menu {
+  background-color: $main-menu-background-color;
+  color: $main-menu-text-color;
+  display: flex;
+  overflow-x: auto;
+  min-height: $main-menu-height;
+  margin: {
+    left:  -1 * $grid-container-padding;
+    right: -1 * $grid-container-padding;
+    bottom: $main-menu-bottom-margin;
+  }
+  z-index: 999;
+
+  box-shadow: $main-menu-shadow-x-offset
+              $main-menu-shadow-y-offset
+              $main-menu-shadow-blur-radius
+              $main-menu-shadow-spread-radius
+              $shadow-color;
+
+  @include for-size(small_only) {
+    //Show the menu at the bottom of the screen
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    box-shadow: $main-menu-shadow-x-offset
+                -1 * $main-menu-shadow-y-offset
+                $main-menu-shadow-blur-radius
+                $main-menu-shadow-spread-radius
+                $shadow-color;
+  }
+
+  & > .title {
+    font-size: $main-menu-title-font-size;
+    padding: $main-menu-title-padding;
+    text-decoration: none;
+    color: $main-menu-text-color;
+    white-space: nowrap;
+    margin: {
+      top: auto;
+      bottom: auto;
+    }
+
+    @include for-size(small_only) {
+      //Hide in small screens
+      display: none;
+    }
+  }
+
+  & > .items {
+    flex-grow: 1;
+    white-space: nowrap;
+    text-align: right;
+    
+    & > .item {
+      text-align: center;
+      display: inline-block;
+      padding: $main-menu-item-padding;
+      //Override <a /> style
+      text-decoration: none;
+      color: $main-menu-text-color;
+  
+      & > .label {
+        display: block;
+      }
+    }
+  }
+}

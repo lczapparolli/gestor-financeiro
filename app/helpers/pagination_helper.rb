@@ -1,29 +1,28 @@
 module PaginationHelper
 
   def pagination(obj, currentPage, rowsPerPage, totalPages, pagesShow = 3)
-    html =
-      "<ul class=\"pagination\">\n" <<
-      "  <li class=\"arrow\">" << link_to("", polymorphic_url(obj, :page => 1, :rows => rowsPerPage), {:class => "fa fa-fast-backward"}) << "</li>\n"
+    #TODO: Improve readability
+    html = link_to("", polymorphic_url(obj, :page => 1, :rows => rowsPerPage), {:class => "link link-default fa fa-fast-backward"}) << "\n"
 
     if currentPage > 1
-      html << "  <li class=\"arrow\">"<< link_to("", polymorphic_url(obj, :page => currentPage - 1, :rows => rowsPerPage), {:class => "fa fa-step-backward"}) << "</li>\n"
+      html << link_to("", polymorphic_url(obj, :page => currentPage - 1, :rows => rowsPerPage), {:class => "link link-default fa fa-step-backward"}) << "\n"
     end
 
     (pagesShow * 2 + 1).times do |pageNum|
       if ((pageNum - pagesShow + currentPage) > 0) && ((pageNum - pagesShow + currentPage) <= totalPages)
-        html << "  <li"
         if (pageNum - pagesShow + currentPage) == currentPage
-          html << " class=\"current\" "
+          linkClass = "link-success"
+        else
+          linkClass = "link-default"
         end
-        html << ">" << link_to((pageNum - pagesShow + currentPage), polymorphic_url(obj, :page => (pageNum - pagesShow + currentPage), :rows => rowsPerPage)) << "</li>\n"
+        html << link_to((pageNum - pagesShow + currentPage), polymorphic_url(obj, :page => (pageNum - pagesShow + currentPage), :rows => rowsPerPage), {:class => "link #{linkClass}"}) << "\n"
       end
     end
 
     if currentPage < totalPages
-      html << "  <li class=\"arrow\">" << link_to("", polymorphic_url(obj, :page => currentPage + 1, :rows => rowsPerPage), {:class => "fa fa-step-forward"}) << "</li>\n"
+      html << link_to("", polymorphic_url(obj, :page => currentPage + 1, :rows => rowsPerPage), {:class => "link link-default fa fa-step-forward"}) << "\n"
     end
-    html << "  <li class=\"arrow\">" << link_to("", polymorphic_url(obj, :page => totalPages, :rows => rowsPerPage), {:class => "fa fa-fast-forward"}) << "</li>\n" <<
-    "</ul>"
+    html << link_to("", polymorphic_url(obj, :page => totalPages, :rows => rowsPerPage), {:class => "link link-default fa fa-fast-forward"}) << "\n"
     html.html_safe
   end
 

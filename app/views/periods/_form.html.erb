@@ -8,40 +8,24 @@
 	<% end %>
 
 	<div class="row">
-		<div class="columns small-12">
+		<div class="col-medium-50 col-small-100">
 			<%= f.label :name %>
 			<%= f.text_field :name %>
 		</div>
-		<div class="columns small-6">
-			<div class="row collapse">
-				<%= f.label :start %>
-        <div class="small-2 columns">
-          <span class="prefix"><i class="fa fa-calendar"></i></span>
-        </div>
-        <div class="small-10 columns">
-					<%= f.text_field :start, :id => 'dateStart', :value => @period.start.try(:strftime, "%d/%m/%Y") %>
-				</div>
-			</div>
+		<div class="col-medium-25 col-small-50">
+				<%= f.label :start do %>Start <i class="fa fa-calendar"></i><% end %>
+				<%= f.date_field :start %>
 		</div>
-		<div class="columns small-6">
-			<div class="row collapse">
-				<%= f.label :end %>
-        <div class="small-2 columns">
-          <span class="prefix"><i class="fa fa-calendar"></i></span>
-        </div>
-        <div class="small-10 columns">
-					<%= f.text_field :end, :id => 'dateEnd', :value => @period.end.try(:strftime, "%d/%m/%Y") %>
-				</div>
-			</div>
+		<div class="col-medium-25 col-small-50">
+				<%= f.label :end do %>End <i class="fa fa-calendar"></i><% end %>
+				<%= f.date_field :end %>
 		</div>
-		<div class="columns small-12">
-			<%= button_tag(type: 'submit', class: 'button success') do %>
+	</div>
+	<div class="row">
+		<div class="col-small-100">
+			<%= button_tag(type: 'submit', class: 'button button-success') do %>
 				<i class="fa fa-check"></i> Save
 			<% end %>
 		</div>
 	</div>
 <% end %>
-<script type="text/javascript">
-	$('#dateEnd').fdatepicker({format: 'dd/mm/yyyy'});
-	$('#dateStart').fdatepicker({format: 'dd/mm/yyyy'});
-</script>

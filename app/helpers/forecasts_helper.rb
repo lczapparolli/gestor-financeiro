@@ -42,8 +42,8 @@ module ForecastsHelper
       percentExtra = 100 - percent
     end
     return "<div class=\"progress\">
-              <span class=\"meter #{spanClass}\" style=\"width: #{percent}%\"></span>
-              <span class=\"meter #{secondaryClass}\" style=\"width: #{percentExtra}%\"></span>
+              <span class=\"progress-item #{spanClass}\" style=\"width: #{percent}%\"></span>
+              <span class=\"progress-item #{secondaryClass}\" style=\"width: #{percentExtra}%\"></span>
             </div>".html_safe
   end
 

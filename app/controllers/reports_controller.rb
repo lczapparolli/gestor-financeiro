@@ -4,8 +4,8 @@ class ReportsController < SecuredController
   def account_evolution
     @report = Array.new
     @group = params[:group] ? params[:group].to_sym : :day
-    @end = params[:end] ? params[:end].to_time : Time.new().change(:hour => 0)
-    @start = params[:start] ? params[:start].to_time : @end - 1.month
+    @end = params[:end] ? params[:end].to_date : Date.current
+    @start = params[:start] ? params[:start].to_date : @end - 1.month
     @accounts = params[:accounts] ? Account.where(id: params[:accounts], user: @user) : Account.where(user: @user)
     @accounts.each do |account|
       curr_date = @start

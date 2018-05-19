@@ -1,0 +1,68 @@
+.container {
+  width: 100%;
+  padding: {
+    top: 0px;
+    left: $grid-container-padding;
+    right: $grid-container-padding;
+    bottom: $grid-container-padding;
+  }
+
+  @include for-size(huge) {
+    //Limiting and centering the container
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    max-width: $screen-large-end;
+  }
+
+  @include for-size(small_only) {
+    //Adding space at the bottom of the page for main menu
+    padding-bottom: $main-menu-height + $grid-container-padding;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: $grid-row-margin 0px;
+  width: 100%;
+
+  & > * {
+    padding: {
+      left: $grid-cell-padding-horizontal;
+      right: $grid-cell-padding-horizontal;
+      top: $grid-cell-padding-top;
+      bottom: $grid-cell-padding-bottom;
+    }
+  }
+}
+
+/***********************************
+ *Mixins for grid system definition*
+ ***********************************/
+@mixin column-definition($scr-size, $col-size) {
+  .col-#{$scr-size}-#{round($col-size)} {
+    flex-basis: $col-size * 1%;
+  }
+}
+
+@mixin grid-definition($size) {
+  @include for-size($size) {
+    @include column-definition($size, 100);
+    @include column-definition($size, 75);
+    @include column-definition($size, 50);
+    @include column-definition($size, 100/3);
+    @include column-definition($size, 25);
+  }
+}
+
+/*************************
+ *Columns size definition*
+ *************************/
+@include grid-definition(small);
+@include grid-definition(medium);
+@include grid-definition(large);
+@include grid-definition(huge);
+@include grid-definition(extra);

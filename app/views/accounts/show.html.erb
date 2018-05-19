@@ -12,8 +12,8 @@
 <% end %>
 
 <div class="row">
-	<div class="small-12 columns">
-		<h1><%= @account.name %> <small><%= link_to '', edit_account_path(@account), :class => "fa fa-pencil" %></small></h1>
+	<div class="col-small-100">
+		<h1><%= @account.name %> <small><%= link_to '', edit_account_path(@account), :class => "icon icon-default fa fa-pencil" %></small></h1>
 		<p>
 			<strong>Balance:</strong>
 			<span><%= number_to_currency(@account.movements.sum(:amount)) %></span>
@@ -21,15 +21,16 @@
 	</div>
 </div>
 <div class="row">
-	<div class="small-12 columns">
+	<div class="col-small-100">
 			<h1>Movements</h1>
 	</div>
+</div>
 <div class="row">
-	<div class="small-12 columns">
-		<table>
+	<div class="col-small-100">
+		<table class="table">
 			<thead>
 				<tr>
-					<th>Description</th>
+					<th width="33%">Description</th>
 					<th>Date</th>
 					<th>Amount</th>
 					<th>Budget</th>
@@ -46,9 +47,9 @@
 					<td><%= number_to_currency(movement.amount) %></td>
 					<td><%= movement.budget.name %></td>
 					<td><%= movement.period.name %></td>
-					<td><%= link_to "", movement, :class => "fa fa-eye" %></td>
-					<td><%= link_to "", edit_movement_path(movement), :class => "fa fa-pencil" %></td>
-					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+					<td><%= link_to "", movement, :class => "link link-default fa fa-eye" %></td>
+					<td><%= link_to "", edit_movement_path(movement), :class => "link link-default fa fa-pencil" %></td>
+					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link link-default fa fa-trash-o" %></td>
 				</tr>
 			<% end %>
         <tr>
@@ -58,7 +59,7 @@
         </tr>
         <tr>
           <td colspan="8">
-						<%= link_to new_movement_path(:account_id => @account, :redirect_resource => 'accounts', :redirect_id => @account), :class => "button expand table-button" do %>
+						<%= link_to new_movement_path(:account_id => @account, :redirect_resource => 'accounts', :redirect_id => @account), :class => "button button-success" do %>
 							<i class="fa fa-plus"></i> New Movement
 						<% end %>
           </td>

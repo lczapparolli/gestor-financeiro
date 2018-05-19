@@ -1,0 +1,59 @@
+label {
+    display: block;
+    font-size: $form-label-font-size;
+}
+
+[type="text"], [type="password"], [type="date"], [type="datetime"], [type="month"], [type="week"], [type="email"],
+[type="number"], [type="search"], [type="tel"], [type="time"], [type="url"], [type="color"], textarea, select {
+  @extend .shadow-animated;
+  display: block;
+  width: 100%;
+  height: $form-input-height;
+  line-height: $form-input-line-height;
+  background-color: $white;
+  font: {
+    size: $form-input-font-size;
+    family: inherit;
+    weight: $form-input-font-weight;
+  }
+  padding: {
+    left: $form-input-padding-horizontal;
+    right: $form-input-padding-horizontal;
+    top: $form-input-padding-vertical;
+    bottom: $form-input-padding-vertical;
+  }
+  border: {
+    radius: $border-radius;
+    style: solid;
+    width: $form-border-width;
+    color: $grey-light;
+  }
+  @include shadow();
+
+  &:hover, &:focus {
+    @include shadow(hover);
+  }
+
+}
+
+//Inputs with a bigger area
+textarea, select[multiple] {
+  height: initial;
+}
+
+//Checkboxes and radio buttons has a special treatment
+input[type="checkbox"], input[type="radio"] {
+  display: inline-block;
+  margin: {
+    left: $form-checkbox-margin-horizontal;
+    right: $form-checkbox-margin-horizontal;
+    top: $form-checkbox-margin-top;
+    bottom: $form-checkbox-margin-bottom;
+  }
+
+  //When label is preceded by a checkbox
+  & + label {
+    display: inline-block;
+  }
+}
+

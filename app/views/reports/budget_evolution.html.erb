@@ -1,33 +1,41 @@
 <div class="row">
-  <div class="small-12 columns">
+  <div class="col-small-100">
     <h1>Budget Evolution</h1>
   </div>
 </div>
 <div class="row">
-  <div class="small-12 columns">
+  <div class="col-small-100">
     <%= line_chart @report, discrete: true %>
   </div>
 </div>
-<%= form_tag "/reports/budget_evolution", method: :get do %>
-  <div class="row collapse">
-    <%= label_tag :budgets, 'Budgets' %>
+<%= form_tag reports_budget_evolution_path, method: :get do %>
+  <div class="row">
+    <div class="col-small-100">
+      <%= label_tag :budgets, 'Budgets' %>
+    </div>
+  </div>
+  <div class="row">
     <% Budget.where(user: @user).each do |budget| %>
-      <div class="medium-4 columns end">
+      <div class="col-medium-25 col-small-50">
         <%= check_box_tag 'budgets[]', budget.id, @budgets.include?(budget), :id => "budget_#{budget.id}" %> <%= label_tag "budget_#{budget.id}", budget.name %>
       </div>
     <% end %>
   </div>
-  <div class="row collapse">
-    <%= label_tag :periods, 'Periods' %>
+  <div class="row">
+    <div class="col-small-100">
+      <%= label_tag :periods, 'Periods' %>
+    </div>
+  </div>
+  <div class="row">
     <% Period.where(user: @user).each do |period| %>
-      <div class="medium-4 columns end">
+      <div class="col-medium-25 col-small-50">
         <%= check_box_tag 'periods[]', period.id, @periods.include?(period), :id => "period_#{period.id}" %> <%= label_tag "period_#{period.id}", period.name %>
       </div>
     <% end %>
   </div>
   <div class="row">
-    <div class="columns small-4">
-      <%= button_tag :type => "submit", :class => "button" do %>
+    <div class="col-small-100">
+      <%= button_tag :type => "submit", :class => "button button-success" do %>
         <i class="fa fa-check"></i> Filter
       <% end %>
     </div>

@@ -1,0 +1,61 @@
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+.button {
+  @extend .all-animated;
+  text-decoration: none;
+  display: inline-block;
+  line-height: $button-line-height;
+  position: relative;
+  border: none;
+  font-size: $button-font-size;
+  border-radius: $border-radius;
+  background-color: $grey-light;
+  color: darken($grey-light, $text-darkness);
+  height: $button-height;
+  line-height: $button-line-height;
+
+  @include shadow();
+
+  padding: {
+    top: $button-padding-top;
+    bottom: $button-padding-bottom;
+    left: $button-padding-left;
+    right: $button-padding-right;
+  }
+
+  &:hover {
+    background-color: lighten($grey-light, $button-hover-lightness);
+    @include shadow(hover);
+  }
+
+  &:active {
+    background-color: darken($grey-light, $button-active-darkness);
+    transition: all $animation-time-fast ease-in-out;
+    @include shadow(active);
+  }
+
+}
+
+@mixin color-button($name, $color) {
+  //TODO: Maybe colors mixins can be unified
+  .button-#{$name} {
+    background-color: $color;
+    color: darken($color, $text-darkness);
+
+    &:hover {
+      background-color: lighten($color, $button-hover-lightness);
+    }
+
+    &:active {
+      background-color: darken($color, $button-active-darkness);
+    }
+  }
+}
+
+@include color-button('default', $blue  );
+@include color-button('alert'  , $red   );
+@include color-button('warning', $yellow);
+@include color-button('success', $green );

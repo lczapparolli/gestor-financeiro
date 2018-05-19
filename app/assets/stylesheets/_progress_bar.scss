@@ -1,0 +1,48 @@
+.progress {
+  width: 100%;
+  display: flex;
+  min-height: 0.9em;
+  white-space: nowrap;
+  padding: 0px;
+  border: 1px solid $grey-dark;
+  background-color: $grey-light;
+  border-radius: $border-radius;
+}
+
+.progress-item {
+  font-size: 0.6em;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:first-child {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+  &.success {
+    background-color: $green;
+    color: darken($green, $text-darkness);
+  }
+
+  &.alert {
+    background-color: $red;
+    color: darken($red, $text-darkness);
+  }
+
+  &.warning {
+    background-color: $yellow;
+    color: darken($yellow, $text-darkness);
+  }
+
+  &.default {
+    background-color: $blue;
+    color: darken($blue, $text-darkness);
+  }
+}

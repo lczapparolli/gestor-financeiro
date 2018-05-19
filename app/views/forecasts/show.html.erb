@@ -12,8 +12,8 @@
 <% end %>
 
 <div class="row">
-	<div class="small-12 columns">
-		<h1><%= @forecast.period.name %> / <%= @forecast.budget.name %> <small><%= link_to '', edit_forecast_path(@forecast), :class => "fa fa-pencil" %></small></h1>
+	<div class="col-small-100">
+		<h1><%= @forecast.period.name %> / <%= @forecast.budget.name %> <small><%= link_to '', edit_forecast_path(@forecast), :class => "link link-default fa fa-pencil" %></small></h1>
 		<p>
 			<strong>Amount:</strong>
 			<span><%= number_to_currency(@forecast.amount) %></span>
@@ -25,16 +25,16 @@
 	</div>
 </div>
 <div class="row">
-  <div class="small-12 columns">
+  <div class="col-small-100">
     <h1>Movements</h1>
   </div>
 </div>
 <div class="row">
-  <div class="small-12 columns">
-    <table>
+  <div class="col-small-100">
+    <table class="table">
       <thead>
         <tr>
-          <th>Description</th>
+          <th width="33%">Description</th>
           <th>Date</th>
           <th>Amount</th>
           <th>Account</th>
@@ -49,9 +49,9 @@
           <td><%= movement.date.try(:strftime, "%d/%m/%Y") %></td>
             <td><%= number_to_currency(movement.amount) %></td>
           <td><%= movement.account.name %></td>
-					<td><%= link_to "", movement, :class => "fa fa-eye" %></td>
-					<td><%= link_to "", edit_movement_path(movement), :class => "fa fa-pencil" %></td>
-					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+					<td><%= link_to "", movement, :class => "link link-default fa fa-eye" %></td>
+					<td><%= link_to "", edit_movement_path(movement), :class => "link link-default fa fa-pencil" %></td>
+					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link link-default fa fa-trash-o" %></td>
         </tr>
       <% end %>
         <tr>
@@ -61,7 +61,7 @@
         </tr>
         <tr>
           <td colspan="7">
-						<%= link_to new_movement_path(:budget_id => @forecast.budget_id, :period_id => @forecast.period_id, :redirect_resource => 'forecasts', :redirect_id => @forecast.id), :class => "button expand table-button" do %>
+						<%= link_to new_movement_path(:budget_id => @forecast.budget_id, :period_id => @forecast.period_id, :redirect_resource => 'forecasts', :redirect_id => @forecast.id), :class => "button button-success" do %>
 							<i class="fa fa-plus"></i> New Movement
 						<% end %>
           </td>

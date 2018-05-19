@@ -12,11 +12,11 @@
 
 
 <div class="row">
-	<div class="columns small-12">
-		<table>
+	<div class="col-small-100">
+		<table class="table">
 		  <thead>
 			<tr>
-        <th>Description</th>
+        <th widht="33%">Description</th>
         <th>Date</th>
         <th>Amount</th>
         <th>Account</th>
@@ -35,9 +35,9 @@
           <td><%= movement.account.name %></td>
           <td><%= movement.budget.name %></td>
           <td><%= movement.period.name %></td>
-					<td><%= link_to "", movement, :class => "fa fa-eye" %></td>
-					<td><%= link_to "", edit_movement_path(movement), :class => "fa fa-pencil" %></td>
-					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+					<td><%= link_to "", movement, :class => "link link-default fa fa-eye" %></td>
+					<td><%= link_to "", edit_movement_path(movement), :class => "link link-default fa fa-pencil" %></td>
+					<td><%= link_to "", movement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link link-default fa fa-trash-o" %></td>
 			  </tr>
 			<% end %>
         <tr>
@@ -47,7 +47,7 @@
         </tr>
 				<tr>
 					<td colspan="9">
-						<%= link_to new_movement_path, :class => "button expand table-button" do %>
+						<%= link_to new_movement_path, :class => "button button-success" do %>
 							<i class="fa fa-plus"></i> New Movement
 						<% end %>
 					</td>

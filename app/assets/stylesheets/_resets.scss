@@ -1,0 +1,13 @@
+body {
+  margin: $body-margin;
+  font-family: Helvetica, Arial, sans-serif;
+  color: $grey-dark;
+
+  @include for-size(small_only) {
+    padding-top: $small-body-top-padding;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

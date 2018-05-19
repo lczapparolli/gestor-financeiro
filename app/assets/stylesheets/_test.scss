@@ -1,0 +1,9 @@
+$grid-cell-border: 1px;
+
+.row {
+  border: solid black $grid-cell-border;
+
+  * {
+    border: solid black $grid-cell-border;
+  }
+}

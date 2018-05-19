@@ -12,11 +12,11 @@
 
 
 <div class="row">
-	<div class="columns small-12">
-		<table>
+	<div class="col-small-100">
+		<table class="table">
 		  <thead>
 			<tr>
-			  <th>Name</th>
+			  <th width="75%">Name</th>
         <th>Start</th>
         <th>End</th>
 			  <th>Balance</th>
@@ -31,9 +31,9 @@
           <td><%= period.start.try(:strftime, "%d/%m/%Y") %></td>
           <td><%= period.end.try(:strftime, "%d/%m/%Y") %></td>
 					<td><%= number_to_currency(period.movements.sum(:amount)) %></td>
-					<td><%= link_to "", period, :class => "fa fa-eye" %></td>
-					<td><%= link_to "", edit_period_path(period), :class => "fa fa-pencil" %></td>
-					<td><%= link_to "", period, method: :delete, data: { confirm: 'Are you sure?' }, :class => "fa fa-trash-o" %></td>
+					<td><%= link_to "", period, :class => "link link-default fa fa-eye" %></td>
+					<td><%= link_to "", edit_period_path(period), :class => "link link-default fa fa-pencil" %></td>
+					<td><%= link_to "", period, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link link-default fa fa-trash-o" %></td>
 			  </tr>
 			<% end %>
         <tr>
@@ -43,7 +43,7 @@
         </tr>
 				<tr>
 					<td colspan="7">
-						<%= link_to new_period_path, :class => "button expand table-button" do %>
+						<%= link_to new_period_path, :class => "button button-success" do %>
 							<i class="fa fa-plus"></i> New Period
 						<% end %>
 					</td>
