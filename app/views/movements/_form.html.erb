@@ -8,53 +8,40 @@
 	<% end %>
 
 	<div class="row">
-		<div class="columns small-4">
+		<div class="col-medium-33 col-small-100">
 			<%= f.label :description %>
 			<%= f.text_field :description %>
 		</div>
-		<div class="columns small-4">
-			<div class="row collapse">
-				<%= f.label :date %>
-        <div class="small-2 columns">
-          <span class="prefix"><i class="fa fa-calendar"></i></span>
-        </div>
-        <div class="small-10 columns">
-					<%= f.text_field :date, :id => 'date', :value => @movement.date.try(:strftime, "%d/%m/%Y") %>
-				</div>
-			</div>
+		<div class="col-medium-33 col-small-100">
+			<%= f.label :date do %>Date <i class="fa fa-calendar"></i><% end %>
+			<%= f.date_field :date %>
 		</div>
-		<div class="columns small-4">
-			<div class="row collapse">
-				<%= f.label :amount %>
-        <div class="small-2 columns">
-          <span class="prefix"><i class="fa fa-usd"></i></span>
-        </div>
-        <div class="small-10 columns">
-          <%= f.text_field :amount %>
-        </div>
-      </div>
+		<div class="col-medium-33 col-small-100">
+			<%= f.label :amount do %>Amount <i class="fa fa-usd"></i><% end %>
+			<%= f.text_field :amount %>
 		</div>
-		<div class="columns small-12">
+	</div>
+	<div class="row">
+		<div class="col-medium-33 col-small-100">
 			<%= f.label :account_id %>
 			<%= f.collection_select(:account_id, Account.where(user: @user), :id, :name) %>
 		</div>
-		<div class="columns small-12">
+		<div class="col-medium-33 col-small-100">
 			<%= f.label :budget_id %>
 			<%= f.collection_select(:budget_id, Budget.where(user: @user).order(:name), :id, :name) %>
 		</div>
-		<div class="columns small-12">
+		<div class="col-medium-33 col-small-100">
 			<%= f.label :period_id %>
 			<%= f.collection_select(:period_id, Period.where(user: @user).order(start: :desc, id: :desc), :id, :name) %>
 		</div>
-		<div class="columns small-12">
+	</div>
+	<div class="row">
+		<div class="col-small-100">
 			<%= hidden_field(:redirect, :resource, :value => params[:redirect_resource]) %>
 			<%= hidden_field(:redirect, :id, :value => params[:redirect_id]) %>
-			<%= button_tag(type: 'submit', class: 'button success') do %>
+			<%= button_tag(type: 'submit', class: 'button button-success') do %>
 				<i class="fa fa-check"></i> Save
 			<% end %>
 		</div>
 	</div>
 <% end %>
-<script type="text/javascript">
-	$('#date').fdatepicker({format: 'dd/mm/yyyy'});
-</script>
