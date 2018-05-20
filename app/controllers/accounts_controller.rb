@@ -69,6 +69,10 @@ class AccountsController < SecuredController
     end
   end
 
+  def resource_description
+    @account.name
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account
