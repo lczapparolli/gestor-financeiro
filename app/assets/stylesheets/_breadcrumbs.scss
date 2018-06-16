@@ -1,0 +1,28 @@
+.breadcrumbs {
+  background-color: $grey-lighter;
+  margin-top: -$main-menu-bottom-margin;
+  margin-left: -$grid-container-padding;
+  margin-right: -$grid-container-padding;
+  padding: $breadcrumb-inner-padding;
+  border: {
+    radius: $border-radius;
+    style: solid;
+    width: $form-border-width;
+    color: $grey-light;
+  }
+
+  & > :not(:last-child):after {
+    @include fa-icon();
+    content: $fa-var-arrow-right;
+    margin: {
+      right: $breadcrumb-item-margin;
+      left: $breadcrumb-item-margin;
+    }
+  }
+
+  & > .current {
+    font: {
+      weight: bold;
+    }
+  }
+}

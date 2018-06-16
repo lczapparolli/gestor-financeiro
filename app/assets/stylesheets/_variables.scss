@@ -25,6 +25,7 @@ $border-radius: 2px !default;
 $white: rgb(255, 255, 255) !default;
 $grey-dark: rgb(75, 75, 75) !default;
 $grey-light: rgb(210, 210, 210) !default;
+$grey-lighter: rgb(246, 246, 246) !default;
 $green:  hsl(120, 98%, 67%) !default;
 $red:    hsl(000, 98%, 67%) !default;
 $yellow: hsl(060, 98%, 67%) !default;
@@ -126,3 +127,10 @@ $form-input-padding-vertical: 0.2em !default;
 $form-checkbox-margin-horizontal: 0em !default;
 $form-checkbox-margin-top: 1.5em !default;
 $form-checkbox-margin-bottom: 0em !default;
+
+
+/*************
+ *Breadcrumbs*
+ *************/
+$breadcrumb-inner-padding: 5px !default;
+$breadcrumb-item-margin: 3px !default;

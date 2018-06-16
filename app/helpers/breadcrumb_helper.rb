@@ -15,22 +15,22 @@ module BreadcrumbHelper
   def controller_tag
     #if is de index action of any controller, only show as current item
     if action_name == "index"
-      sanitize(" > ") << content_tag(:span, controller.controller_name.capitalize, class: "current")
+      content_tag(:span, controller.controller_name.capitalize, class: "current")
     elsif controller.respond_to?(:index) #if contains a 'index' method treat like a resource controller
-      sanitize(" > ") << link_to(controller.controller_name.capitalize, controller: controller.controller_name, action: "index")
+      link_to(controller.controller_name.capitalize, { controller: controller.controller_name, action: "index" }, { class: "link link-default" })
     else
-      sanitize(" > ") << content_tag(:span, action_name.tr("_", " ").capitalize, class: "current")
+      content_tag(:span, action_name.tr("_", " ").capitalize, class: "current")
     end
   end
 
   def current_action_tag
     if action_name == "edit" #when the action is edit, link to show item
-      sanitize(" > ") << link_to(controller.resource_description, controller: controller.controller_name, action: "show") <<
-      sanitize(" > ") << content_tag(:span, "Edit", class: "current")
+      link_to(controller.resource_description, { controller: controller.controller_name, action: "show" }, { class: "link link-default" }) <<
+      content_tag(:span, "Edit", class: "current")
     elsif action_name == "show"
-      sanitize(" > ") << content_tag(:span, controller.resource_description, class: "current")
+      content_tag(:span, controller.resource_description, class: "current")
     elsif action_name == "new"
-      sanitize(" > ") << content_tag(:span, "New", class: "current")
+      content_tag(:span, "New", class: "current")
     end
   end
 
