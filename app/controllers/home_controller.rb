@@ -5,8 +5,8 @@ class HomeController < SecuredController
     if (params[:period_id])
       @period = Period.find(params[:period_id])
     end
-    if @period && @period.user != @user
-      @period = Period.where(user: @user).first
+    unless @period && @period.user == @user
+      @period = Period.where(user: @user).order(start: :desc, id: :desc).first
     end
     unless @period
       @period = Period.new
