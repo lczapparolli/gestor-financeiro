@@ -7,7 +7,12 @@ class ForecastsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (Forecast.where(user: @user).count / @rows.to_f).ceil
-    @forecasts = Forecast.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
+    @forecasts = Forecast.
+                  includes(:period, :budget).
+                  where(user: @user).
+                  order("periods.start DESC, periods.id, budgets.name").
+                  limit(@rows).
+                  offset((@page - 1) * @rows)
   end
 
   # GET /forecasts/1
