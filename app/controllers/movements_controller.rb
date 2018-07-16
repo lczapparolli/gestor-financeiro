@@ -45,7 +45,7 @@ class MovementsController < SecuredController
         if redirect_info['resource'] && redirect_info['id'] && redirect_info['resource'] != '' && redirect_info['resource'] != ''
           format.html { redirect_to url_for(controller: redirect_info['resource'], action: 'show', id: redirect_info['id']), notice: 'Movement was successfully created.' }
         else
-          format.html { redirect_to @movement, notice: 'Movement was successfully created.' }
+          format.html { redirect_to @movement, success: 'Movement was successfully created.' }
         end
         format.json { render :show, status: :created, location: @movement }
       else
@@ -65,7 +65,7 @@ class MovementsController < SecuredController
         if redirect_info['resource'] && redirect_info['id'] && redirect_info['resource'] != '' && redirect_info['resource'] != ''
           format.html { redirect_to url_for(controller: redirect_info['resource'], action: 'show', id: redirect_info['id']), notice: 'Movement was successfully updated.' }
         else
-          format.html { redirect_to @movement, notice: 'Movement was successfully updated.' }
+          format.html { redirect_to @movement, success: 'Movement was successfully updated.' }
         end
         format.json { render :show, status: :ok, location: @movement }
       else
@@ -80,7 +80,7 @@ class MovementsController < SecuredController
   def destroy
     @movement.destroy
     respond_to do |format|
-      format.html { redirect_to movements_url, notice: 'Movement was successfully destroyed.' }
+      format.html { redirect_to movements_url, success: 'Movement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -92,9 +92,9 @@ class MovementsController < SecuredController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movement
-      @movement = Movement.find(params[:id])
-      if @movement.user != @user
-        redirect_to movements_url, notice: 'You do not have access to this movement'
+      @movement = Movement.where(id: params[:id]).first()
+      unless @movement && @movement.user == @user
+        redirect_to movements_url, alert: 'Movement not found.'
       end
     end
 

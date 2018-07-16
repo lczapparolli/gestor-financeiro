@@ -59,7 +59,7 @@ class ForecastsController < SecuredController
   def update
     respond_to do |format|
       if @forecast.update(forecast_params)
-        format.html { redirect_to @forecast, notice: 'Forecast was successfully updated.' }
+        format.html { redirect_to @forecast, success: 'Forecast was successfully updated.' }
         format.json { render :show, status: :ok, location: @forecast }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class ForecastsController < SecuredController
   def destroy
     @forecast.destroy
     respond_to do |format|
-      format.html { redirect_to forecasts_url, notice: 'Forecast was successfully destroyed.' }
+      format.html { redirect_to forecasts_url, success: 'Forecast was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -85,9 +85,9 @@ class ForecastsController < SecuredController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_forecast
-      @forecast = Forecast.find(params[:id])
-      if @forecast.user != @user
-        redirect_to forecasts_url, notice: 'You do not have access to this forecast'
+      @forecast = Forecast.where(id: params[:id]).first()
+      unless @forecast && @forecast.user == @user
+        redirect_to forecasts_url, alert: 'Forecast not found.'
       end
     end
 

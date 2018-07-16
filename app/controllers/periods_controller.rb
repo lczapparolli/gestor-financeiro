@@ -36,7 +36,7 @@ class PeriodsController < SecuredController
 
     respond_to do |format|
       if @period.save
-        format.html { redirect_to @period, notice: 'Period was successfully created.' }
+        format.html { redirect_to @period, success: 'Period was successfully created.' }
         format.json { render :show, status: :created, location: @period }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class PeriodsController < SecuredController
   def update
     respond_to do |format|
       if @period.update(period_params)
-        format.html { redirect_to @period, notice: 'Period was successfully updated.' }
+        format.html { redirect_to @period, success: 'Period was successfully updated.' }
         format.json { render :show, status: :ok, location: @period }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class PeriodsController < SecuredController
   def destroy
     @period.destroy
     respond_to do |format|
-      format.html { redirect_to periods_url, notice: 'Period was successfully destroyed.' }
+      format.html { redirect_to periods_url, success: 'Period was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,9 +76,9 @@ class PeriodsController < SecuredController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_period
-      @period = Period.find(params[:id])
-      if @period.user != @user
-        redirect_to periods_url, notice: 'You do not have access to this period'
+      @period = Period.where(id: params[:id]).first()
+      unless @period && @period.user == @user
+        redirect_to periods_url, alert: 'Period not found.'
       end
     end
 

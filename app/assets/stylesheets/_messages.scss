@@ -1,0 +1,13 @@
+.messages {
+
+  & > * {
+    display: block;
+    margin-left: -$grid-container-padding;
+    margin-right: -$grid-container-padding;
+    padding: $breadcrumb-inner-padding;
+    border: {
+      radius: $border-radius;
+    }
+  }
+  
+}

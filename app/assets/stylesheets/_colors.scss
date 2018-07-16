@@ -1,0 +1,19 @@
+@mixin color-class($name, $color) {
+  .#{$name} {
+    background-color: $color;
+    color: darken($color, $text-darkness);
+
+    &:hover {
+      background-color: lighten($color, $button-hover-lightness);
+    }
+
+    &:active {
+      background-color: darken($color, $button-active-darkness);
+    }
+  }
+}
+
+@include color-class('default', $blue  );
+@include color-class('alert'  , $red   );
+@include color-class('warning', $yellow);
+@include color-class('success', $green );

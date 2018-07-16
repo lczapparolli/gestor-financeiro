@@ -36,7 +36,7 @@ class BudgetsController < SecuredController
 
     respond_to do |format|
       if @budget.save
-        format.html { redirect_to @budget, notice: 'Budget was successfully created.' }
+        format.html { redirect_to @budget, success: 'Budget was successfully created.' }
         format.json { render :show, status: :created, location: @budget }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class BudgetsController < SecuredController
   def update
     respond_to do |format|
       if @budget.update(budget_params)
-        format.html { redirect_to @budget, notice: 'Budget was successfully updated.' }
+        format.html { redirect_to @budget, success: 'Budget was successfully updated.' }
         format.json { render :show, status: :ok, location: @budget }
       else
         format.html { render :edit }
@@ -76,9 +76,9 @@ class BudgetsController < SecuredController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_budget
-      @budget = Budget.find(params[:id])
-      if @budget.user != @user
-        redirect_to budgets_url, notice: 'You do not have access to this budget'
+      @budget = Budget.where(id: params[:id]).first()
+      unless @budget && @budget.user == @user
+        redirect_to budgets_url, alert: 'Budget not found.'
       end
     end
 

@@ -50,7 +50,7 @@ class AccountsController < SecuredController
   def update
     respond_to do |format|
       if @account.update(account_params)
-        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
+        format.html { redirect_to @account, success: 'Account was successfully updated.' }
         format.json { render :show, status: :ok, location: @account }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class AccountsController < SecuredController
   def destroy
     @account.destroy
     respond_to do |format|
-      format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
+      format.html { redirect_to accounts_url, success: 'Account was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,9 +76,9 @@ class AccountsController < SecuredController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account
-      @account = Account.find(params[:id])
-      if @account.user != @user
-        redirect_to accounts_url, notice: 'You do not have access to this account'
+      @account = Account.where(id: params[:id]).first()
+      unless @account && @account.user == @user
+        redirect_to accounts_url, alert: 'Account not found.'
       end
     end
 
