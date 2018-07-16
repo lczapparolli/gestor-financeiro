@@ -1,10 +1,3 @@
-<% if notice %>
-	<div data-alert class="alert-box success radius">
-		<span id="notice"><%= notice %></span>
-		<a href="#" class="close">&times;</a>
-	</div>
-<% end %>
-
 <div class="row">
 	<div class="col-small-100">
 		<h1><%= @period.name %> <small><%= link_to '', edit_period_path(@period), :class => "link link-default fa fa-pencil" %></small></h1>
