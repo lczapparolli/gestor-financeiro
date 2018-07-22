@@ -7,7 +7,7 @@ class MovementsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (Movement.where(user: @user).count / @rows.to_f).ceil
-    @movements = Movement.where(user: @user).order(date: :desc, id: :desc).limit(@rows).offset((@page - 1) * @rows)
+    @movements = Movement.where(user: @user).ordered_list.limited(@rows, (@page - 1) * @rows)
   end
 
   # GET /movements/1

@@ -7,7 +7,7 @@ class AccountsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (Account.where(user: @user).count / @rows.to_f).ceil
-    @accounts = Account.where(user: @user).limit(@rows).offset((@page - 1) * @rows)
+    @accounts = Account.with_balance.where(user: @user).limited(@rows, (@page - 1) * @rows)
   end
 
   # GET /accounts/1
@@ -16,7 +16,7 @@ class AccountsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (@account.movements.count / @rows.to_f).ceil
-    @movements = @account.movements.order(date: :desc, id: :desc).limit(@rows).offset((@page - 1) * @rows)
+    @movements = @account.movements.ordered_list.limited(@rows, (@page -1) * @rows)
   end
 
   # GET /accounts/new

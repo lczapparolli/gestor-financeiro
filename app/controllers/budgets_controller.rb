@@ -16,7 +16,7 @@ class BudgetsController < SecuredController
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
     @totalPages = (@budget.movements.count / @rows.to_f).ceil
-    @movements = @budget.movements.order(date: :desc, id: :desc).limit(@rows).offset((@page - 1) * @rows)
+    @movements = @budget.movements.ordered_list.limited(@rows, (@page - 1) * @rows)
   end
 
   # GET /budgets/new

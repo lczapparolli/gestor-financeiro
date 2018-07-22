@@ -4,4 +4,9 @@ class Forecast < ActiveRecord::Base
   belongs_to :period
   belongs_to :budget
   belongs_to :user
+  
+  scope :limited, ->(rows, offset) {
+    limit(rows).
+    offset(offset)
+  }
 end

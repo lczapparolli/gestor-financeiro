@@ -13,7 +13,7 @@
 			<% @accounts.each do |account| %>
 			  <tr>
 					<td><%= account.name %></td>
-					<td><%= number_to_currency(account.movements.sum(:amount)) %></td>
+					<td><%= number_to_currency(account.balance) %></td>
 					<td><%= link_to "", account, :class => "link link-default fa fa-eye" %></td>
 					<td><%= link_to "", edit_account_path(account), :class => "link link-default fa fa-pencil" %></td>
 					<td><%= link_to "", account, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link link-default fa fa-trash-o" %></td>

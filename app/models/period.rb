@@ -4,4 +4,9 @@ class Period < ActiveRecord::Base
   has_many :movements
   has_many :budget_periods
   belongs_to :user
+  
+  scope :limited, ->(rows, offset) {
+    limit(rows).
+    offset(offset)
+  }
 end
