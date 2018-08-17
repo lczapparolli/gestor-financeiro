@@ -6,7 +6,7 @@ class AccountsController < SecuredController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Account.where(user: @user).count / @rows.to_f).ceil
+    @totalRows = Account.where(user: @user).count
     @accounts = Account.with_balance.where(user: @user).limited(@rows, (@page - 1) * @rows)
   end
 
@@ -15,7 +15,7 @@ class AccountsController < SecuredController
   def show
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (@account.movements.count / @rows.to_f).ceil
+    @totalRows = @account.movements.count
     @movements = @account.movements.ordered_list.limited(@rows, (@page -1) * @rows)
   end
 

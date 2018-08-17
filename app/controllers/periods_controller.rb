@@ -6,7 +6,7 @@ class PeriodsController < SecuredController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Period.where(user: @user).count / @rows.to_f).ceil
+    @totalRows = Period.where(user: @user).count
     @periods = Period.where(user: @user).order(start: :desc, id: :desc).limit(@rows).offset((@page - 1) * @rows)
   end
 
@@ -15,7 +15,7 @@ class PeriodsController < SecuredController
   def show
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (@period.movements.count / @rows.to_f).ceil
+    @totalRows = @period.movements.count
     @movements = @period.movements.ordered_list.limited(@rows, (@page - 1) * @rows)
   end
 

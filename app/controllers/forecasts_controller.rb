@@ -6,7 +6,7 @@ class ForecastsController < SecuredController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Forecast.where(user: @user).count / @rows.to_f).ceil
+    @totalRows = Forecast.where(user: @user).count
     @forecasts = Forecast.
                   includes(:period, :budget).
                   where(user: @user).
@@ -20,7 +20,7 @@ class ForecastsController < SecuredController
   def show
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Movement.where(period_id: @forecast.period_id, budget_id: @forecast.budget_id).count / @rows.to_f).ceil
+    @totalRows = Movement.where(period_id: @forecast.period_id, budget_id: @forecast.budget_id).count
     @movements = Movement.where(period_id: @forecast.period_id, budget_id: @forecast.budget_id).ordered_list.limited(@rows, (@page - 1) * @rows)
   end
 

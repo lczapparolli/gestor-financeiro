@@ -1,0 +1,10 @@
+.paginator {
+  text-align: center;
+
+  & > * {
+    padding: {
+      left: 3px;
+      right: 3px;
+    }
+  }
+}

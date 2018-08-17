@@ -6,7 +6,7 @@ class BudgetsController < SecuredController
   def index
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (Budget.where(user: @user).count / @rows.to_f).ceil
+    @totalRows = Budget.where(user: @user).count
     @budgets = Budget.where(user: @user).order(:name).limit(@rows).offset((@page - 1) * @rows)
   end
 
@@ -15,7 +15,7 @@ class BudgetsController < SecuredController
   def show
     @page = params[:page] ? params[:page].to_i : 1
     @rows = params[:rows] ? params[:rows].to_i : 10
-    @totalPages = (@budget.movements.count / @rows.to_f).ceil
+    @totalRows = @budget.movements.count
     @movements = @budget.movements.ordered_list.limited(@rows, (@page - 1) * @rows)
   end
 
