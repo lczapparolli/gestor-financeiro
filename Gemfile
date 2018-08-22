@@ -43,3 +43,6 @@ gem "groupdate"
 
 #Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+#Fix security vulnerability
+gem 'sprockets', '~> 3.7.2'
