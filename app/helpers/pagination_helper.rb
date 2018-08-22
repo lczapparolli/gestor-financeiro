@@ -6,15 +6,29 @@ module PaginationHelper
     pages_to_show = total_pages < pages_to_show ? total_pages : pages_to_show
 
     content_tag(:div, class: "paginator") do
-      link_to("", polymorphic_url(obj, :page => 1, :rows => rows_per_page), {:class => "link link-default fa fa-fast-backward"}) <<
-      #TODO: Add class to disabled link
-      link_to("", polymorphic_url(obj, :page => current_page - 1, :rows => rows_per_page), {:class => "link link-default fa fa-step-backward"}) <<
+      link_to("", polymorphic_url(obj, :page => 1, :rows => rows_per_page), {:class => "button button-default fa fa-fast-backward"}) <<
+      previous_link(obj, current_page, rows_per_page) <<
       page_links(obj, current_page, rows_per_page, total_pages, pages_to_show) <<
-      #TODO: Add class to disabled link
-      link_to("", polymorphic_url(obj, :page => current_page + 1, :rows => rows_per_page), {:class => "link link-default fa fa-step-forward"}) <<
-      link_to("", polymorphic_url(obj, :page => total_pages, :rows => rows_per_page), {:class => "link link-default fa fa-fast-forward"})
+      next_link(obj, current_page, total_pages, rows_per_page) <<
+      link_to("", polymorphic_url(obj, :page => total_pages, :rows => rows_per_page), {:class => "button button-default fa fa-fast-forward"})
     end
 
+  end
+
+  def previous_link(obj, current_page, rows_per_page)
+    unless first_page?(current_page)
+      link_to("", polymorphic_url(obj, :page => current_page - 1, :rows => rows_per_page), {:class => "button button-default fa fa-step-backward"})
+    else
+      link_to("", "", {:class => "button button-disabled fa fa-step-backward"})
+    end
+  end
+
+  def next_link(obj, current_page, total_pages, rows_per_page)
+    unless last_page?(current_page, total_pages)
+      link_to("", polymorphic_url(obj, :page => current_page + 1, :rows => rows_per_page), {:class => "button button-default fa fa-step-forward"})
+    else
+      link_to("", "", {:class => "button button-disabled fa fa-step-forward"})
+    end
   end
 
   def page_links(obj, current_page, rows_per_page, total_pages, pages_to_show)
@@ -23,8 +37,8 @@ module PaginationHelper
     
     page_list = page_list(current_page, pages_to_show, total_pages)
     page_list.each do |page_number|
-      link_class = (page_number == current_page) ? "link-success" : "link-default"
-      pages << link_to(page_number, polymorphic_url(obj, :page => page_number, :rows => rows_per_page), {:class => "link #{link_class}"})
+      link_class = (page_number == current_page) ? "button-success" : "button-default"
+      pages << link_to(page_number, polymorphic_url(obj, :page => page_number, :rows => rows_per_page), {:class => "button #{link_class}"})
     end
     sanitize(pages)
   end

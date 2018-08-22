@@ -1,6 +1,6 @@
 body {
   margin: $body-margin;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   color: $grey-dark;
 
   @include for-size(small_only) {

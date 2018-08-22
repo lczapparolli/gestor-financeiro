@@ -17,15 +17,13 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
   height: $button-height;
   line-height: $button-line-height;
 
-  @include shadow();
-
   padding: {
     top: $button-padding-top;
     bottom: $button-padding-bottom;
     left: $button-padding-left;
     right: $button-padding-right;
   }
-
+  
   &:hover {
     background-color: lighten($grey-light, $button-hover-lightness);
     @include shadow(hover);
@@ -36,7 +34,10 @@ button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-mo
     transition: all $animation-time-fast ease-in-out;
     @include shadow(active);
   }
+}
 
+.button-disabled {
+  cursor: not-allowed;
 }
 
 @mixin color-button($name, $color) {
